@@ -10,7 +10,7 @@ class CreateCertificados < ActiveRecord::Migration[6.0]
       t.string :superficie
       t.string :droga
       t.string :codigo
-      t.longtext :observaciones_certificado
+      t.string :observaciones_certificado
       t.boolean :estado
       t.references :cliente, null: false, foreign_key: true
 

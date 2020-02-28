@@ -5,7 +5,7 @@ class CreateTecnicos < ActiveRecord::Migration[6.0]
       t.string :apellido
       t.string :nombre
       t.string :domicilio
-      t.longtext :observaciones_tecnico
+      t.string :observaciones_tecnico
       t.string :telefono
       t.boolean :estado
 
