@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nro certificado:</strong>
+  <%= @certificado.nro_certificado %>
+</p>
+
+<p>
+  <strong>Fecha aplicacion:</strong>
+  <%= @certificado.fecha_aplicacion %>
+</p>
+
+<p>
+  <strong>Fecha vencimiento:</strong>
+  <%= @certificado.fecha_vencimiento %>
+</p>
+
+<p>
+  <strong>Hora aplicacion:</strong>
+  <%= @certificado.hora_aplicacion %>
+</p>
+
+<p>
+  <strong>Tratamiento:</strong>
+  <%= @certificado.tratamiento %>
+</p>
+
+<p>
+  <strong>Vector:</strong>
+  <%= @certificado.vector %>
+</p>
+
+<p>
+  <strong>Superficie:</strong>
+  <%= @certificado.superficie %>
+</p>
+
+<p>
+  <strong>Droga:</strong>
+  <%= @certificado.droga %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @certificado.codigo %>
+</p>
+
+<p>
+  <strong>Observaciones certificado:</strong>
+  <%= @certificado.observaciones_certificado %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @certificado.estado %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @certificado.cliente_id %>
+</p>
+
+<%= link_to 'Edit', edit_certificado_path(@certificado) %> |
+<%= link_to 'Back', certificados_path %>

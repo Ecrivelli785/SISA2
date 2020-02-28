@@ -1,0 +1,77 @@
+<%= form_with(model: certificado, local: true) do |form| %>
+  <% if certificado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(certificado.errors.count, "error") %> prohibited this certificado from being saved:</h2>
+
+      <ul>
+        <% certificado.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nro_certificado %>
+    <%= form.number_field :nro_certificado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_aplicacion %>
+    <%= form.date_select :fecha_aplicacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_vencimiento %>
+    <%= form.date_select :fecha_vencimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_aplicacion %>
+    <%= form.time_select :hora_aplicacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tratamiento %>
+    <%= form.text_field :tratamiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vector %>
+    <%= form.text_field :vector %>
+  </div>
+
+  <div class="field">
+    <%= form.label :superficie %>
+    <%= form.text_field :superficie %>
+  </div>
+
+  <div class="field">
+    <%= form.label :droga %>
+    <%= form.text_field :droga %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo %>
+    <%= form.text_field :codigo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :observaciones_certificado %>
+    <%= form.text_field :observaciones_certificado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.check_box :estado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cliente_id %>
+    <%= form.text_field :cliente_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
