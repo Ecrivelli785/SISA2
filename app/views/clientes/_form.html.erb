@@ -1,62 +1,18 @@
-<%= form_with(model: cliente, local: true) do |form| %>
-  <% if cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+<%= simple_form_for(@cliente) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <ul>
-        <% cliente.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :apellido %>
-    <%= form.text_field :apellido %>
+  <div class="form-inputs cliente-new-form">
+    <%= f.input :apellido %>
+    <%= f.input :nombre %>
+    <%= f.input :domicilio %>
+    <%= f.input :cliente_tipo, as: :radio_buttons, collection: Cliente::CLIENTE_TIPO, wrapper: :vertical_collection_inline, label:'Tipo Cliente'%>
+    <%= f.input :telefono %>
+    <%= f.input :celular %>
+    <%= f.input :rubro %>
+    <%= f.input :cuit %>
+    <%= f.input :correo %>
   </div>
-
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :domicilio %>
-    <%= form.text_field :domicilio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :celular %>
-    <%= form.text_field :celular %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefono %>
-    <%= form.text_field :telefono %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cuit %>
-    <%= form.text_field :cuit %>
-  </div>
-
-  <div class="field">
-    <%= form.label :correo %>
-    <%= form.text_field :correo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rubro %>
-    <%= form.text_field :rubro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cliente_tipo %>
-    <%= form.text_field :cliente_tipo  %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <%= f.button :submit, placeholder: "Crear" %>
   </div>
 <% end %>
