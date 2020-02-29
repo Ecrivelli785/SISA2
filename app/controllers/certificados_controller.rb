@@ -1,6 +1,6 @@
 class CertificadosController < ApplicationController
   before_action :set_certificado, only: [:show, :edit, :update, :destroy]
-
+  #before_action :set_cliente
   # GET /certificados
   # GET /certificados.json
   def index
@@ -24,7 +24,12 @@ class CertificadosController < ApplicationController
   # POST /certificados
   # POST /certificados.json
   def create
-    @certificado = Certificado.new(certificado_params)
+    #@certificado = Certificado.new(certificado_params)
+    #@certificado.cliente = @cliente
+    @certificado = @certificado.cliente.create(params[:cliente])
+    @cliente = Cliente.find(params[:cliente_id])  
+    
+    @certificado.update estado: true
 
     respond_to do |format|
       if @certificado.save
@@ -62,6 +67,9 @@ class CertificadosController < ApplicationController
   end
 
   private
+    #def set_cliente
+    #  @cliente = Cliente.find(params[:id])  
+    #end
     # Use callbacks to share common setup or constraints between actions.
     def set_certificado
       @certificado = Certificado.find(params[:id])

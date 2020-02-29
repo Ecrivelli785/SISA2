@@ -1,4 +1,4 @@
-<%= simple_form_for @certificado do |f| %>
+<%= simple_form_for ([@cliente,@certificado]) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,7 +8,11 @@
       <div><%= f.input :superficie %></div>
       <div><%= f.input :codigo %></div>
     </div>
-    <%= f.association :cliente, as: :select %>
+
+    <div><%= f.label :cliente_id %></div>
+    
+    <%= f.association :cliente%>
+
     <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
     <%= f.input :tratamiento, as: :radio_buttons, collection: Certificado::TRATAMIENTO, wrapper: :vertical_collection_inline, label:'Tipo Tratamiento'%>
     <%= f.input :vector, as: :radio_buttons, collection: Certificado::VECTOR, wrapper: :vertical_collection_inline, label:'Tipo Vector'%>

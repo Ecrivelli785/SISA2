@@ -10,6 +10,8 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    @certificado = Certificado.new
+    @certificado.update cliente_id: 1
   end
 
   # GET /clientes/new
