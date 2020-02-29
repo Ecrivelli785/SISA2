@@ -5,11 +5,26 @@ class CertificadosController < ApplicationController
   # GET /certificados.json
   def index
     @certificados = Certificado.all
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
   end
 
   # GET /certificados/1
   # GET /certificados/1.json
   def show
+    @certificado = Certificado.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
   end
 
   # GET /certificados/new

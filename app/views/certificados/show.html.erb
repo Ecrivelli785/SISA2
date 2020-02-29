@@ -48,4 +48,6 @@
 
 <%= link_to 'Edit', edit_certificado_path(@certificado) %> |
 <%= link_to 'Back', certificados_path %>
+  <div class="p-2 bd-highlight"><%= link_to "Imprimir Certificado", certificados_path(format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" } %></div>
+    <div class="p-2 bd-highlight"><%= link_to "Imprimir FAJA", clientes_path(format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" } %></div>
 </div>
