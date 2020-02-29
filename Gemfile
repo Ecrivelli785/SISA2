@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'simple_form'
 
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
