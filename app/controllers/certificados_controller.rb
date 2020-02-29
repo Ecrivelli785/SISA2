@@ -25,7 +25,7 @@ class CertificadosController < ApplicationController
   # POST /certificados.json
   def create
     @certificado = Certificado.new(certificado_params)
-
+    @certificado.update estado: true
     respond_to do |format|
       if @certificado.save
         format.html { redirect_to @certificado, notice: 'Certificado was successfully created.' }

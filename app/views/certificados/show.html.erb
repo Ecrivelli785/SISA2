@@ -1,64 +1,51 @@
+<div class="container"></div>
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nro certificado:</strong>
-  <%= @certificado.nro_certificado %>
-</p>
+<div class="d-flex justify-content-between">
+  <div>
+    <h1>Detalles del certificado</h1>
+  </div>
+  <div>
+    <%= link_to 'Atrás',  certificados_path, class: 'btn btn-success btn-cliente' %>
+  </div>
+</div>
 
-<p>
-  <strong>Fecha aplicacion:</strong>
-  <%= @certificado.fecha_aplicacion %>
-</p>
+<div class="container" style="overflow-y: scroll; overflow-x: scroll; width:1000px">
+<table>
+  <thead>
+    <th><strong>Nro certificado:</strong></th>
+    <th><strong>Nombre:</strong></th>
+    <th><strong>Apellido:</strong></th>
+    <th><strong>Tratamiento:</strong></th>
+    <th><strong>Vectores:</strong></th>
+    <th><strong>Superficie:</strong></th>
+    <th><strong>Veneno:</strong></th>
+    <th><strong>Fecha aplicacion:</strong></th>
+    <th><strong>Fecha vencimiento:</strong></th>
+    <th><strong>Hora aplicacion:</strong></th>
+    <th><strong>Codigo:</strong></th>
+</thead>
 
-<p>
-  <strong>Fecha vencimiento:</strong>
-  <%= @certificado.fecha_vencimiento %>
-</p>
-
-<p>
-  <strong>Hora aplicacion:</strong>
-  <%= @certificado.hora_aplicacion %>
-</p>
-
-<p>
-  <strong>Tratamiento:</strong>
-  <%= @certificado.tratamiento %>
-</p>
-
-<p>
-  <strong>Vector:</strong>
-  <%= @certificado.vector %>
-</p>
-
-<p>
-  <strong>Superficie:</strong>
-  <%= @certificado.superficie %>
-</p>
-
-<p>
-  <strong>Droga:</strong>
-  <%= @certificado.droga %>
-</p>
-
-<p>
-  <strong>Codigo:</strong>
-  <%= @certificado.codigo %>
-</p>
-
-<p>
-  <strong>Observaciones certificado:</strong>
-  <%= @certificado.observaciones_certificado %>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @certificado.estado %>
-</p>
-
-<p>
-  <strong>Cliente:</strong>
-  <%= @certificado.cliente_id %>
-</p>
+  <tbody>
+    <td> <%= @certificado.nro_certificado %></td>
+    <td> <%= @certificado.cliente.nombre %></td>
+    <td> <%= @certificado.cliente.apellido %></td>
+    <td> <%= @certificado.tratamiento %></td>
+    <td> <%= @certificado.vector %></td>
+    <td> <%= @certificado.superficie%></td>
+    <td> <%= @certificado.droga %></td>
+    <td> <%= @certificado.fecha_aplicacion %></td>
+    <td> <%= @certificado.fecha_vencimiento %></td>
+    <td> <%= @certificado.hora_aplicacion.strftime("%l:%M %p")  %></td>
+    <td> <%= @certificado.codigo %></td>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
 
 <%= link_to 'Edit', edit_certificado_path(@certificado) %> |
 <%= link_to 'Back', certificados_path %>
+</div>

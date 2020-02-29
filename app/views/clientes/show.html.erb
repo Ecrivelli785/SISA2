@@ -1,4 +1,6 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Apellido:</strong>
@@ -16,38 +18,13 @@
 </p>
 
 <p>
-  <strong>Celular:</strong>
-  <%= @cliente.celular %>
-</p>
-
-<p>
   <strong>Telefono:</strong>
   <%= @cliente.telefono %>
 </p>
 
 <p>
-  <strong>Estado:</strong>
-  <%= @cliente.estado %>
-</p>
-
-<p>
-  <strong>Estado mkt:</strong>
-  <%= @cliente.estado_mkt %>
-</p>
-
-<p>
-  <strong>Cuit:</strong>
-  <%= @cliente.cuit %>
-</p>
-
-<p>
-  <strong>Correo:</strong>
-  <%= @cliente.correo %>
-</p>
-
-<p>
-  <strong>Observaciones cliente:</strong>
-  <%= @cliente.observaciones_cliente %>
+  <strong>Celular:</strong>
+  <%= @cliente.celular %>
 </p>
 
 <p>
@@ -56,10 +33,18 @@
 </p>
 
 <p>
-  <strong>Cliente tipo:</strong>
-  <%= @cliente.cliente_tipo %>
+  <strong>CUIT:</strong>
+  <%= @cliente.cuit %>
 </p>
 
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', clientes_path %>
-<div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', new_certificado_path(@cliente)%></div>
+<p>
+  <strong>Correo:</strong>
+  <%= @cliente.correo %>
+</p>
+
+<div class="d-flex bd-highlight mb-3">
+  <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_cliente_path(@cliente),method: :get %></div>
+  <div class="p-2 bd-highlight">  <%= button_to 'Back', clientes_path(@cliente), method: :get %></div>
+  <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', new_certificado_path(@cliente)%></div>
+</div>
+</div>
