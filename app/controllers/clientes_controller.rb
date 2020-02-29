@@ -5,15 +5,28 @@ class ClientesController < ApplicationController
   # GET /clientes.json
   def index
     @clientes = Cliente.all
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+      render template: 'clientes/pdf', pdf: 'Reporte'
+      end
+    end
   end
-
   # GET /clientes/1
   # GET /clientes/1.json
   def show
     @certificado = Certificado.new
     @certificado.update cliente_id: 1
+    @cliente = Cliente.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'clientes/pdf', pdf: 'Reporte'
+      end
+    end
   end
-
   # GET /clientes/new
   def new
     @cliente = Cliente.new

@@ -5,11 +5,26 @@ class CertificadosController < ApplicationController
   # GET /certificados.json
   def index
     @certificados = Certificado.all
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
   end
 
   # GET /certificados/1
   # GET /certificados/1.json
   def show
+    @certificado = Certificado.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
   end
 
   # GET /certificados/new
@@ -26,11 +41,9 @@ class CertificadosController < ApplicationController
   def create
     #@certificado = Certificado.new(certificado_params)
     #@certificado.cliente = @cliente
-    @certificado = @certificado.cliente.create(params[:cliente])
-    @cliente = Cliente.find(params[:cliente_id])  
-    
-    @certificado.update estado: true
 
+    @certificado = Certificado.new(certificado_params)
+    @certificado.update estado: true
     respond_to do |format|
       if @certificado.save
         format.html { redirect_to @certificado, notice: 'Certificado was successfully created.' }
@@ -64,6 +77,10 @@ class CertificadosController < ApplicationController
       format.html { redirect_to certificados_url, notice: 'Certificado was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def url
+    @url = root_url
   end
 
   private

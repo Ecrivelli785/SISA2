@@ -1,4 +1,6 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Apellido:</strong>
@@ -16,27 +18,22 @@
 </p>
 
 <p>
-  <strong>Celular:</strong>
-  <%= @cliente.celular %>
-</p>
-
-<p>
   <strong>Telefono:</strong>
   <%= @cliente.telefono %>
 </p>
 
 <p>
-  <strong>Estado:</strong>
-  <%= @cliente.estado %>
+  <strong>Celular:</strong>
+  <%= @cliente.celular %>
 </p>
 
 <p>
-  <strong>Estado mkt:</strong>
-  <%= @cliente.estado_mkt %>
+  <strong>Rubro:</strong>
+  <%= @cliente.rubro %>
 </p>
 
 <p>
-  <strong>Cuit:</strong>
+  <strong>CUIT:</strong>
   <%= @cliente.cuit %>
 </p>
 
@@ -60,6 +57,9 @@
   <%= @cliente.cliente_tipo %>
 </p>
 
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', clientes_path %>
-<div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', new_cliente_certificado_path(@cliente.cliente_id)%></div>
+<div class="d-flex bd-highlight mb-3">
+  <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_cliente_path(@cliente),method: :get %></div>
+  <div class="p-2 bd-highlight">  <%= button_to 'Back', clientes_path(@cliente), method: :get %></div>
+  <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', new_cliente_certificado_path(@cliente)%></div>
+</div>
+</div>

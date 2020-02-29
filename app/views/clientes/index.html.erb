@@ -1,49 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Clientes</h1>
+<div class="container">
+<div class="d-flex justify-content-between">
+  <div>
+    <h1>Clientes</h1>
+  </div>
+  <div>
+    <%= link_to 'Nuevo Cliente', new_cliente_path, class: 'btn btn-success btn-cliente' %>
+  </div>
+</div>
 
+<%= form_tag(search_page_path, :method => "get") %>
+  <div class="input-group my-3">
+    <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
+  </div>
+
+<div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:1000px">
 <table>
   <thead>
     <tr>
       <th>Apellido</th>
       <th>Nombre</th>
       <th>Domicilio</th>
-      <th>Celular</th>
       <th>Telefono</th>
-      <th>Estado</th>
-      <th>Estado mkt</th>
-      <th>Cuit</th>
-      <th>Correo</th>
-      <th>Observaciones cliente</th>
+      <th>Celular</th>
       <th>Rubro</th>
-      <th>Cliente tipo</th>
+      <th>Tipo Cliente</th>
+      <th>CUIT</th>
+      <th>Correo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @clientes.each do |cliente| %>
-      <tr>
-        <td><%= cliente.apellido %></td>
-        <td><%= cliente.nombre %></td>
-        <td><%= cliente.domicilio %></td>
-        <td><%= cliente.celular %></td>
-        <td><%= cliente.telefono %></td>
-        <td><%= cliente.estado %></td>
-        <td><%= cliente.estado_mkt %></td>
-        <td><%= cliente.cuit %></td>
-        <td><%= cliente.correo %></td>
-        <td><%= cliente.observaciones_cliente %></td>
-        <td><%= cliente.rubro %></td>
-        <td><%= cliente.cliente_tipo %></td>
-        <td><%= link_to 'Show', cliente %></td>
-        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%if cliente.estado == true %>
+        <tr>
+          <td><%= cliente.apellido %></td>
+          <td><%= cliente.nombre %></td>
+          <td><%= cliente.domicilio %></td>
+          <td><%= cliente.telefono %></td>
+          <td><%= cliente.celular %></td>
+          <td><%= cliente.rubro %></td>
+          <td><%= cliente.cliente_tipo %></td>
+          <td><%= cliente.cuit %></td>
+          <td><%= cliente.correo %></td>
+          <td><%= link_to  'Detalle', cliente %></td>
+          <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: "Estás seguro?" }  %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
 
-<br>
 
-<%= link_to 'New Cliente', new_cliente_path %>

@@ -1,39 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Dni:</strong>
-  <%= @tecnico.dni %>
-</p>
+  <p>
+    <strong>Dni:</strong>
+    <%= @tecnico.dni %>
+  </p>
 
-<p>
-  <strong>Apellido:</strong>
-  <%= @tecnico.apellido %>
-</p>
+  <p>
+    <strong>Apellido:</strong>
+    <%= @tecnico.apellido %>
+  </p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @tecnico.nombre %>
-</p>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @tecnico.nombre %>
+  </p>
 
-<p>
-  <strong>Domicilio:</strong>
-  <%= @tecnico.domicilio %>
-</p>
+  <p>
+    <strong>Domicilio:</strong>
+    <%= @tecnico.domicilio %>
+  </p>
 
-<p>
-  <strong>Observaciones tecnico:</strong>
-  <%= @tecnico.observaciones_tecnico %>
-</p>
+  <p>
+    <strong>Telefono:</strong>
+    <%= @tecnico.telefono %>
+  </p>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @tecnico.telefono %>
-</p>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @tecnico.estado %>
-</p>
-
-<%= link_to 'Edit', edit_tecnico_path(@tecnico) %> |
-<%= link_to 'Back', tecnicos_path %>
+  <%= link_to 'Edit', edit_tecnico_path(@tecnico) %> |
+  <%= link_to 'Back', tecnicos_path %>
+</div>

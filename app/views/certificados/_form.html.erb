@@ -8,11 +8,7 @@
       <div><%= f.input :superficie %></div>
       <div><%= f.input :codigo %></div>
     </div>
-
-    <div><%= f.label :cliente_id %></div>
-    
-    <%= f.association :cliente%>
-
+    <%= f.association :cliente, :include_blank => false, :label_method => lambda { |cliente| "#{cliente.nombre}  #{cliente.apellido} #{} #{cliente.cuit}" } %>
     <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
     <%= f.input :tratamiento, as: :radio_buttons, collection: Certificado::TRATAMIENTO, wrapper: :vertical_collection_inline, label:'Tipo Tratamiento'%>
     <%= f.input :vector, as: :radio_buttons, collection: Certificado::VECTOR, wrapper: :vertical_collection_inline, label:'Tipo Vector'%>
