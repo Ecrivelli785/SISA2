@@ -20,8 +20,8 @@ class ClientesController < ApplicationController
 
     @certificado = Certificado.new
     @certificado.update cliente_id: params[:id]
-    @certificado.update estado: true
-    
+    # @certificado.update estado: false
+
     respond_to do |format|
       format.html
       format.json
