@@ -43,18 +43,18 @@ class CertificadosController < ApplicationController
     @certificado = Certificado.find(params[:id]).last
     
     @certificado.update(certificado_params)
-    
-    
 
-    #respond_to do |format|
-    #  if @certificado.save
-    #    format.html { redirect_to [@cliente, @certificado], notice: 'Certificado was successfully created.' }
-    #    format.json { render :show, status: :created, location: @certificado }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @certificado.errors, status: :unprocessable_entity }
-    #  end
-    #end
+    @certificado.update estado: true
+    
+    respond_to do |format|
+      if @certificado.update(certificado_params)
+        format.html { redirect_to @certificado, notice: 'El certificado fue creado' }
+        format.json { render :show, status: :ok, location: @certificado }
+      else
+        format.html { render :edit }
+        format.json { render json: @certificado.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /certificados/1
