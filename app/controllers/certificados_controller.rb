@@ -43,6 +43,8 @@ class CertificadosController < ApplicationController
     @certificado.update estado: true
     respond_to do |format|
       if @certificado.save
+      # 1) this should work ?
+      @certificado.cliente << cliente_id
         format.html { redirect_to @certificado, notice: 'Certificado was successfully created.' }
         format.json { render :show, status: :created, location: @certificado }
       else
