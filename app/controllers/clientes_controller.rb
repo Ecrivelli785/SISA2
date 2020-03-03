@@ -16,9 +16,12 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    @certificado = Certificado.new
-    @certificado.update cliente_id: 1
     @cliente = Cliente.find(params[:id])
+
+    @certificado = Certificado.new
+    @certificado.update cliente_id: params[:id]
+    @certificado.update estado: true
+    
     respond_to do |format|
       format.html
       format.json
