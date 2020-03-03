@@ -7,10 +7,8 @@
       <div><%= f.input :nro_certificado %></div>
       <div><%= f.input :superficie %></div>
       <div><%= f.input :codigo %></div>
-
     </div>
-      <div><%= f.label :cliente_id ,'Tipo Droga'%></div>
-   
+      
         <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
     <%= f.input :tratamiento, as: :radio_buttons, collection: Certificado::TRATAMIENTO, wrapper: :vertical_collection_inline, label:'Tipo Tratamiento'%>
     <%= f.input :vector, as: :radio_buttons, collection: Certificado::VECTOR, wrapper: :vertical_collection_inline, label:'Tipo Vector'%>
