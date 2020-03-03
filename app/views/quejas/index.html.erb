@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="d-flex justify-content-between">
+  <div>
+    <h1>Reclamos</h1>
+  </div>
+   <!-- Trigger/Open The Modal -->
+<button class=" btn btn-success btn-cliente" id="myBtn"><strong>Nueva reclamo</strong></button>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h5>Ingrese datos del cliente</h5>
+    <%= form_tag(search_page_path, :method => "get") do %>
+  <div class="input-group my-3">
+    <%= search_field_tag :search, params[:search], placeholder: "Ingrese CUIT u otro dato del cliente", class: "form-control" %>
+  </div>
+<% end %>
+
+  </div>
+
+</div>
+
+</div>
+  <%= form_tag(searchcertificado_page_path, :method => "get",:calss => "btnn") do %>
+<div class="input-group my-3">
+  <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
+</div>
+<% end %>
+
+<div class="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:100%">
+<table>
+  <thead>
+    <tr>
+      <th>Fecha Reclamo</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Descripcion</th>
+      <th>Nro. Certificado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quejas.each do |queja| %>
+      <%if certificado.estado == true %>
+        <tr>
+          <td><%= queja.fecha_queja %></td>
+          <td><%= queja.cliente.nombre %></td>
+          <td><%= queja.cliente.apellido %></td>
+          <td><%= queja.observacion %></td>
+          <td><%= queja.certificado %></td>
+          <td><%= link_to 'Show', certificado %></td>
+          <td><%= link_to 'Edit', edit_certificado_path(certificado) %></td>
+          <td><%= link_to 'Destroy', certificado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</div>
+</table>
+</div>
+<script>
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+

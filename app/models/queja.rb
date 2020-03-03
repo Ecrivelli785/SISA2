@@ -1,0 +1,2 @@
+class Queja < ApplicationRecord
+end
