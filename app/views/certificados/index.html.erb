@@ -50,7 +50,7 @@
 
   <tbody>
     <% @certificados.each do |certificado| %>
-      <%if certificado.estado == true%>
+      <%if certificado.estado == true &&  certificado.hora_aplicacion != nil%>
         <tr>
           <td><%= certificado.nro_certificado %></td>
           <td><%= certificado.cliente.nombre %></td>
