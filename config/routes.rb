@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   get 'calendario', to: 'pages#calendario', as: :calendario
-  resources :certificados, except: [:new]
   resources :tecnicos
+  resources :certificados, except: [:new]
   resources :clientes do
     resources :certificados, only: [:new]
   end

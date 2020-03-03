@@ -1,5 +1,4 @@
-
-<%= simple_form_for @certificado do |f| %>
+<%= simple_form_for (@certificado) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,9 +7,11 @@
       <div><%= f.input :nro_certificado %></div>
       <div><%= f.input :superficie %></div>
       <div><%= f.input :codigo %></div>
+
     </div>
-    <%= f.association :cliente, :include_blank => false, :label_method => lambda { |cliente| "#{cliente.nombre}  #{cliente.apellido} #{} #{cliente.cuit}" } %>
-    <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
+      <div><%= f.label :cliente_id ,'Tipo Droga'%></div>
+   
+        <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
     <%= f.input :tratamiento, as: :radio_buttons, collection: Certificado::TRATAMIENTO, wrapper: :vertical_collection_inline, label:'Tipo Tratamiento'%>
     <%= f.input :vector, as: :radio_buttons, collection: Certificado::VECTOR, wrapper: :vertical_collection_inline, label:'Tipo Vector'%>
     <div class="d-flex justify-content-between">

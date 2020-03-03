@@ -1,0 +1,2 @@
+
+<%= f.association :cliente, :include_blank => false, :label_method => lambda { |cliente| "#{cliente.nombre}  #{cliente.apellido} #{} #{cliente.cuit}" } %>
