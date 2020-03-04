@@ -4,7 +4,7 @@ class CertificadosController < ApplicationController
   # GET /certificados
   # GET /certificados.json
   def index
-    @certificados = Certificado.all
+    @certificados = Certificado.all.order(created_at: :desc)
     respond_to do |format|
       format.html
       format.json
