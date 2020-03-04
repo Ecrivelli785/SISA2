@@ -15,7 +15,7 @@
     <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
   </div>
 
-<div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:1050px">
+<div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:100%">
 <table>
   <thead>
     <tr>
@@ -48,7 +48,7 @@
           <td><%= cliente.correo %></td>
           <td><%= cliente.cliente_tipo %></td>
           <td><%= link_to  'Detalle', cliente,:class => "btn btn-dark" %></td>
-          <td><%= link_to 'Eliminar', cliente,:class => "btn btn-dark", method: :delete, data: { confirm: "Estás seguro?" }  %></td>
+          <td><%= link_to 'Eliminar', cliente,:class => "btn btn-dark", method: :delete, data: { confirm: "¿Estás seguro/a?" }  %></td>
         </tr>
       <% end %>
       <% end %>

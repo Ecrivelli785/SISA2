@@ -5,7 +5,7 @@
     <h1>Certificados</h1>
   </div>
    <!-- Trigger/Open The Modal -->
-<button class=" btn btn-success btn-cliente" id="myBtn"><strong>Nuevo certificado</strong></button>
+<button class=" btn btn-success btn-cliente" id="myBtn">Nuevo certificado</button>
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -62,7 +62,7 @@
           <td><%= certificado.fecha_aplicacion %></td>
           <td><%= certificado.codigo %></td>
           <td><%= link_to 'Detalle', certificado,:class => "btn btn-dark" %></td>
-          <td><%= link_to 'Eliminar', certificado, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-dark" %></td>
+          <td><%= link_to 'Eliminar', certificado, method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
         </tr>
       <% end %>
     <% end %>

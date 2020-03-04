@@ -1,47 +1,46 @@
 <div class="container">
-<div class="col-9">
-<p id="notice"><%= notice %></p>
-<div class="d-flex justify-content-between">
-  <div>
-    <h1>Técnicos</h1>
+  <p id="notice"><%= notice %></p>
+  <div class="d-flex justify-content-between">
+    <div>
+      <h1>Técnicos</h1>
+    </div>
+    <div>
+     <%= link_to 'Nuevo Técnico', new_tecnico_path, class: 'btn btn-success btn-cliente' %>
+    </div>
   </div>
-  <div>
-    <%= link_to 'Nuevo Técnico', new_tecnico_path, class: 'btn btn-success btn-cliente' %>
-  </div>
-</div>
- <%= form_tag(searchtecnico_page_path, :method => "get") do %>
-  <div class="input-group my-3">
-    <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
-  </div>
-<% end %>
+   <%= form_tag(searchtecnico_page_path, :method => "get") do %>
+    <div class="input-group my-3">
+      <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
+    </div>
+  <% end %>
 
-<div calss="container" style="overflow-y: scroll; height:400px; overflow-x: scroll; width:800px">
-  <table>
-    <thead>
-      <tr>
-        <th>Dni</th>
-        <th>Apellido</th>
-        <th>Nombre</th>
-        <th>Domicilio</th>
-        <th>Telefono</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tecnicos.each do |tecnico| %>
+  <div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:100%">
+    <table>
+      <thead>
         <tr>
-          <td><%= tecnico.dni %></td>
-          <td><%= tecnico.apellido %></td>
-          <td><%= tecnico.nombre %></td>
-          <td><%= tecnico.domicilio %></td>
-          <td><%= tecnico.telefono %></td>
-          <td><%= link_to 'Detalle', tecnico_path(tecnico),:class => "btn btn-secondary" %></td>
-          <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-secondary" %></td>
+          <th>Dni</th>
+          <th>Apellido</th>
+          <th>Nombre</th>
+          <th>Domicilio</th>
+          <th>Telefono</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-</table>
-</div>
+      </thead>
+      <tbody>
+        <% @tecnicos.each do |tecnico| %>
+          <tr>
+            <td><%= tecnico.dni %></td>
+            <td><%= tecnico.apellido %></td>
+            <td><%= tecnico.nombre %></td>
+            <td><%= tecnico.domicilio %></td>
+            <td><%= tecnico.telefono %></td>
+            <td><%= link_to 'Detalle', tecnico_path(tecnico),:class => "btn btn-dark" %></td>
+            <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  </div>
 </div>
 
 
