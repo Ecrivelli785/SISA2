@@ -35,8 +35,8 @@
           <td><%= tecnico.nombre %></td>
           <td><%= tecnico.domicilio %></td>
           <td><%= tecnico.telefono %></td>
-          <td><%= link_to 'Detalle', tecnico_path(tecnico) %></td>
-          <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Detalle', tecnico_path(tecnico),:class => "btn btn-secondary" %></td>
+          <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-secondary" %></td>
         </tr>
       <% end %>
     </tbody>

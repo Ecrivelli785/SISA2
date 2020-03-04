@@ -34,15 +34,14 @@
   <thead>
     <tr>
       <th>Nro certificado</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
+      <th>Apellido y Nombre</th>
+      <th>Domicilio</th>
+      <th>Rubro</th>
       <th>Tratamiento</th>
       <th>Vectores</th>
       <th>Superficie</th>
       <th>Veneno</th>
       <th>Fecha aplicacion</th>
-      <th>Fecha vencimiento</th>
-      <th>Hora aplicacion</th>
       <th>Codigo</th>
       <th colspan="3"></th>
     </tr>
@@ -53,19 +52,17 @@
       <%if certificado.estado == true &&  certificado.hora_aplicacion != nil%>
         <tr>
           <td><%= certificado.nro_certificado %></td>
-          <td><%= certificado.cliente.nombre %></td>
-          <td><%= certificado.cliente.apellido %></td>
+          <td><%= certificado.cliente.apellido && certificado.cliente.nombre %></td>
+          <td><%= certificado.cliente.domicilio %></td>
+          <td><%= certificado.cliente.rubro %></td>
           <td><%= certificado.tratamiento %></td>
           <td><%= certificado.vector %></td>
           <td><%= certificado.superficie %></td>
           <td><%= certificado.droga  %></td>
           <td><%= certificado.fecha_aplicacion %></td>
-          <td><%= certificado.fecha_vencimiento %></td>
-          <td><%= certificado.hora_aplicacion.strftime("%l:%M %p")  %></td>
           <td><%= certificado.codigo %></td>
-          <td><%= link_to 'Show', certificado %></td>
-          <td><%= link_to 'Edit', edit_certificado_path(certificado) %></td>
-          <td><%= link_to 'Destroy', certificado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Detalle', certificado,:class => "btn btn-dark" %></td>
+          <td><%= link_to 'Eliminar', certificado, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-dark" %></td>
         </tr>
       <% end %>
     <% end %>
