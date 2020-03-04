@@ -4,7 +4,7 @@ class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.json
   def index
-    @clientes = Cliente.all
+    @clientes = Cliente.all.order(:apellido)
     respond_to do |format|
       format.html
       format.json
