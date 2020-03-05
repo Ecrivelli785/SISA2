@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Cobardia (firebrick)</title>
+    <title><%= @certificado.cliente.apellido %> </title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,184 +10,123 @@
     <meta name="description" content="Invoicebus Invoice Template">
     <meta name="author" content="Invoicebus">
 
-    <meta name="template-hash" content="baadb45704803c2d1a1ac3e569b757d5">
+    <meta name="template-hash" content="f3142bbb0a1696d5caa932ecab0fc530">
     <%= wicked_pdf_stylesheet_link_tag %>
     <%= wicked_pdf_javascript_include_tag %>
     <link rel="stylesheet" href="css/template.css">
   </head>
   <body>
     <div id="container">
-      <section id="memo">
-        <div class="logo">
-          <img data-logo="{company_logo}" />
+      <div class="company-name">
+          <span>SISA-Fumigaciones</span>
+      </div>
+        <div class="border-1">
+          <div class="company-subtitle d-flex justify-content-between">
+            <h1><strong>SISTEMA INTEGRAL DE SANEAMIENTO AMBIENTAL</strong></h1>
+          </div>
+          <div class="company-info">
+            <div><p>PADRON N°68.023/03 - CAM-LSA 50 429/03 CUIT: 27-02898301-3 20-22583332-0</p></div>
+            <div><p>ADMINISTRACIÓN & VENTAS: MANZANA N°748 LOTE N°8</p></div>
+            <div><p>BARRIO SANTA ANA II - CP 4400-SALTA CAPITAL</p></div>
+            <div><p>TELEFONOS: (0387) 4291082 - (0387) 4248560</p></div>
+          </div>
+      </div>
+
+      <section id="invoice-cliente">
+        <div class="datos-cliente">
+          <br>
+
+          <span><strong>Fecha de aplicación:</strong> <%= @certificado.fecha_aplicacion %></span>
+          <span><strong>Apellido y nombre:</strong>  <%= @certificado.cliente.apellido %> <%= @certificado.cliente.nombre%></span>
+          <span><strong>Domicilio:</strong>  <%= @certificado.cliente.domicilio %></span>
+          <span><strong>Barrio:</strong>  <%= @certificado.cliente.domicilio %></span>
         </div>
 
-        <div class="company-info">
-          <br/>
-          <span>@certificado</span>
-          <span>{company_city_zip_state}</span>
-
-          <br />
-
-          <span>{company_phone_fax}</span>
-          <span>{company_email_web}</span>
-        </div>
-
-      </section>
-
-      <section id="invoice-title-number">
-
-        <span id="title"><%= @certificado.nro_certificado %></span>
-        <span id="number">{invoice_number}</span>
-
-      </section>
-
-      <div class="clearfix"></div>
-
-      <section id="client-info">
-        <span>{bill_to_label}</span>
-        <div>
-          <span class="bold">{client_name}</span>
-        </div>
-
-        <div>
-          <span>{client_address}</span>
-        </div>
-
-        <div>
-          <span>{client_city_zip_state}</span>
-        </div>
-
-        <div>
-          <span>{client_phone_fax}</span>
-        </div>
-
-        <div>
-          <span>{client_email}</span>
-        </div>
-
-        <div>
-          <span>{client_other}</span>
+        <div class="datos-cliente">
+          <br>
+          <span><strong>Hora Aplicación:</strong>  <%= @certificado.hora_aplicacion.strftime("%H:%M") %></span>
+          <span><strong>Telefono</strong> <%= @certificado.cliente.telefono %></span>
+          <span><strong>Celular</strong>  <%= @certificado.cliente.celular %></span>
+          <span><br></span>
+          <span><strong><%= @certificado.codigo %></strong> </span>
         </div>
       </section>
-
-      <div class="clearfix"></div>
-
-      <section id="items">
-
-        <table cellpadding="0" cellspacing="0">
-
+      <div>
+        <span></span>
+      </div>
+       <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
           <tr>
-            <th>{item_row_number_label}</th> <!-- Dummy cell for the row number and row commands -->
-            <th>{item_description_label}</th>
-            <th>{item_quantity_label}</th>
-            <th>{item_price_label}</th>
-            <th>{item_discount_label}</th>
-            <th>{item_tax_label}</th>
-            <th>{item_line_total_label}</th>
+            <th class="no"><strong>Detalles</strong></th>
+            <th class="desc"></th>
           </tr>
-
-          <tr data-iterate="item">
-            <td>{item_row_number}</td> <!-- Don't remove this column as it's needed for the row commands -->
-            <td>{item_description}</td>
-            <td>{item_quantity}</td>
-            <td>{item_price}</td>
-            <td>{item_discount}</td>
-            <td>{item_tax}</td>
-            <td>{item_line_total}</td>
-          </tr>
-
-        </table>
-
-      </section>
-
-      <section id="sums">
-
-        <table cellpadding="0" cellspacing="0">
           <tr>
-            <th>{amount_subtotal_label}</th>
-            <td>{amount_subtotal}</td>
+            <th class="no"><strong>Rubro</strong></th>
+            <th class="unit"><strong><%= @certificado.cliente.rubro.upcase %></strong></th>
           </tr>
-
-          <tr data-iterate="tax">
-            <th>{tax_name}</th>
-            <td>{tax_value}</td>
+          <tr>
+            <th class="no"><strong>Tipo de Rubro</strong></th>
+            <th class="unit"><strong><%= @certificado.cliente.cliente_tipo %></strong></th>
           </tr>
-
-          <tr class="amount-total">
-            <th>{amount_total_label}</th>
-            <td>{amount_total}</td>
+          <tr>
+            <th class="no"><strong>Tratamiento</strong></th>
+            <th class="unit"><strong><%= @certificado.tratamiento %></strong></th>
           </tr>
-
-          <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
-               For example Invoicebus doesn't need amount paid and amount due on quotes  -->
-          <tr data-hide-on-quote="true">
-            <th>{amount_paid_label}</th>
-            <td>{amount_paid}</td>
+          <tr>
+            <th class="no"><strong>Vector Tratado</strong></th>
+            <th class="unit"><strong><%= @certificado.vector %></strong></th>
           </tr>
-
-          <tr data-hide-on-quote="true">
-            <th>{amount_due_label}</th>
-            <td>{amount_due}</td>
+          <tr>
+            <th class="no"><strong>Superficie tratada</strong></th>
+            <th class="unit"><strong><%= @certificado.superficie %></strong></th>
           </tr>
+          <tr>
+            <th class="no"><strong>Droga Usada</strong></th>
+            <th class="unit"><strong><%= @certificado.droga %></strong></th>
+          </tr>
+         </thead>
+      </table>
 
-        </table>
-
-        <div class="clearfix"></div>
-
-      </section>
-
-      <div class="clearfix"></div>
-
-      <section id="invoice-info">
-        <div>
-          <span>{issue_date_label}</span> <span>{issue_date}</span>
-        </div>
-        <div>
-          <span>{due_date_label}</span> <span>{due_date}</span>
-        </div>
-
-        <br />
-
-        <div>
-          <span>{currency_label}</span> <span>{currency}</span>
-        </div>
-        <div>
-          <span>{po_number_label}</span> <span>{po_number}</span>
-        </div>
-        <div>
-          <span>{net_term_label}</span> <span>{net_term}</span>
-        </div>
-      </section>
-
-      <section id="terms">
-
-        <div class="notes">{terms}</div>
-
-        <br />
-
-        <div class="payment-info">
-          <div>{payment_info1}</div>
-          <div>{payment_info2}</div>
-          <div>{payment_info3}</div>
-          <div>{payment_info4}</div>
-          <div>{payment_info5}</div>
-        </div>
-
-      </section>
-
-      <div class="clearfix"></div>
-
-      <div class="thank-you">{terms_label}</div>
-
-      <div class="clearfix"></div>
+      <div class="container-text">
+        <p>Antídoto: 1 Piretroydes: Tratamietno Sintomático - Bromadilone: Vitamina K1 -DDVP:Sulfato de Atropina.
+        Recomendaciones: 1 -mantener cerrado el ambiente tratado mínimo 4 horas, ventilar y lavar(sin lavandina) las superficies de uso culinario, etc.</p>
+      </div>
+      <div class="container">
+        <h1><strong>La firma brinda garantía de satisfacción, validez 30 días corridosposteriores al servicio, sin excepción.</strong></h1>
+        <p>GARANTÍA SUJETA A INSPECCIONES TECNICAS, A LAS CONDICIONES DE HIGIENE, EDILICIAS, CLIMATICAS, AL GRADO DE INFESTACION Y AL TIPO DE PLAGA - LA EFECTIVIDAD DEL SERVICIO NO DEPENDE DE LAS FECHAS DE APLICACIÓN Y VENCIMIENTO DE ESTE CERTIFICADO, SOLO DEL PLAN DE TRABAJO ACORDADO, COMERCIOS DONDE SE EXPENDA, ELABORE, FRACCIONES Y AMACENE ALIMENTOS, LA CERTIFICACIÓN DE SERVICIOS NO SERA SUPERIOR A LOS 60 DÍAS, SEGÚN ORDENANZA N°12.157/04 -DECRETO N°917/98 DE LA MUNICIPALIDAD DE LA CIUDAD DE SALTA.</p>
+      </div>
+      <div class="container">
+        <h1><strong>OBSERVACIONES:</strong></h1>
+      </div>
+    <div class="container d-flex justify-content-between">
+      <div>
+        <h1><strong><%= @certificado.fecha_vencimiento %></strong></h1>
+        <h1><strong>FECHA DE VENCIMIENTO</strong></h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>RECIBE CONFORME</h1>
+      </div>
+      <div>
+        <h1><strong><%= @certificado.fecha_vencimiento %></strong></h1>
+        <h1><strong>FECHA DE VENCIMIENTO</strong></h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Por S.I.S.A Gerente o Técnico</h1>
+      </div>
     </div>
+  </div>
 
+  </body>
+</html>
 
 <style>
-
-  /*! Invoice Templates @author: Invoicebus @email: info@invoicebus.com @web: https://invoicebus.com @version: 1.0.0 @updated: 2015-02-27 16:02:34 @license: Invoicebus */
-/* Reset styles */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700&subset=cyrillic,cyrillic-ext,latin,greek-ext,greek,latin-ext,vietnamese");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -220,6 +159,8 @@ ol, ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  margin-top:20px;
+  margin-bottom: 20px;
 }
 
 caption, th, td {
@@ -274,75 +215,122 @@ b, strong, .bold {
 #container {
   font: normal 13px/1.4em 'Open Sans', Sans-serif;
   margin: 0 auto;
-  min-height: 1158px;
-  background: #F7EDEB url("../img/bg.png") 0 0 no-repeat;
-  background-size: 100% auto;
-  color: #5B6165;
-  position: relative;
+  border: solid 1px;
 }
+ .nro_certificado {
+ position: absolute;
+ right: 40px;
+ font-color: #8BA09E;
+ margin-top: 5px;
+ margin-bottom: 40px;
+ font-size: 20px;
+  }
 
-#memo {
-  padding-top: 50px;
-  margin: 0 110px 0 60px;
-  border-bottom: 1px solid #ddd;
-  height: 115px;
+
+.company-name {
+  background: #67BA2A 560px center no-repeat;
+  background-size: 100px auto;
+  padding: 10px 20px;
+  position: relative;
+  margin: 20px;
 }
-#memo .logo {
-  float: left;
-  margin-right: 20px;
-}
-#memo .logo img {
-  width: 150px;
-  height: 100px;
-}
-#memo .company-info {
-  float: right;
-  text-align: right;
-}
-#memo .company-info > div:first-child {
-  line-height: 1em;
-  font-weight: bold;
-  font-size: 22px;
-  color: #B32C39;
-}
-#memo .company-info span {
-  font-size: 11px;
+ .company-name span {
+  color: white;
   display: inline-block;
   min-width: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1em;
 }
-#memo:after {
+ .company-name .right-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  background: url("../img/right-arrow.png") right center no-repeat;
+  background-size: auto 70px;
+}
+
+
+
+.company-nro-certificado {
+  background: #67BA2A 560px center no-repeat;
+  background-size: 100px auto;
+  padding: 5px 20px;
+  position: absolute;
+  right: 30px;
+  top: -40px;
+  margin: 20px;
+}
+ .company-nro-certificado span {
+  color: white;
+  display: inline-block;
+  min-width: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.border-1 {
+  border-bottom: solid 1px:
+  margin-bottom: 20px;
+}
+ .company-subtitle {
+  margin-left: 20px;
+  font-size: 20px;
+  color: 000;
+  margin-bottom: 15px;
+}
+
+ .company-info {
+  margin-left: 20px;
+  font-size: 15px;
+  color: 000;
+}
+ .company-info div {
+  margin-bottom: 3px;
+  min-width: 20px;
+}
+ .company-info span {
+  min-width: 20px;
+}
+
+.datos-cliente span {
+  margin-left: 20px;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+#invoice-cliente {
+  float: left;
+   border-top: solid 1px;
+   width: 120%;
+}
+#invoice-cliente > div {
+  float: left;
+}
+#invoice-cliente div span  {
+  display: block;
+  white-space: nowrap;
+  min-width: 40px;
+  min-height: 18px;
+  margin-bottom: 3px;
+}
+#invoice-cliente > div:last-child {
+  margin-left: 20px;
+}
+#invoice-cliente:after {
   content: '';
   display: block;
   clear: both;
 }
 
-#invoice-title-number {
-  font-weight: bold;
-  margin: 30px 0;
-}
-#invoice-title-number span {
-  line-height: 0.88em;
-  display: inline-block;
-  min-width: 20px;
-}
-#invoice-title-number #title {
-  text-transform: uppercase;
-  padding: 0px 2px 0px 60px;
-  font-size: 50px;
-  background: #F4846F;
-  color: white;
-}
-#invoice-title-number #number {
-  margin-left: 10px;
-  font-size: 35px;
-  position: relative;
-  top: -5px;
-}
 
 #client-info {
-  float: left;
-  margin-left: 60px;
+  float: right;
+  margin: 5px 20px 0 0;
   min-width: 220px;
+  text-align: right;
 }
 #client-info > div {
   margin-bottom: 3px;
@@ -352,26 +340,42 @@ b, strong, .bold {
   display: block;
   min-width: 20px;
 }
-#client-info > span {
-  text-transform: uppercase;
+
+#invoice-title-number {
+  text-align: center;
+  margin: 20px 0;
+}
+#invoice-title-number span {
+  display: inline-block;
+  min-width: 20px;
+}
+#invoice-title-number #title {
+  margin-right: 15px;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+#invoice-title-number #number {
+  font-size: 15px;
+  text-align: left;
 }
 
 table {
   table-layout: fixed;
+
 }
 table th, table td {
   vertical-align: top;
   word-break: keep-all;
   word-wrap: break-word;
+
 }
 
 #items {
-  margin: 35px 30px 0 30px;
+  margin: 20px 0 35px 0;
 }
 #items .first-cell, #items table th:first-child, #items table td:first-child {
-  width: 40px !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  width: 18px;
   text-align: right;
 }
 #items table {
@@ -379,12 +383,10 @@ table th, table td {
   width: 100%;
 }
 #items table th {
-  font-weight: bold;
-  padding: 5px 8px;
+  padding: 12px 10px;
   text-align: right;
-  background: #B32C39;
-  color: white;
-  text-transform: uppercase;
+  background: #E6E7E7;
+  border-bottom: 4px solid #487774;
 }
 #items table th:nth-child(2) {
   width: 30%;
@@ -392,108 +394,187 @@ table th, table td {
 }
 #items table th:last-child {
   text-align: right;
+  padding-right: 20px !important;
 }
 #items table td {
-  padding: 9px 8px;
+  padding: 15px 10px;
   text-align: right;
-  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #CCCCCF;
+}
+#items table td:first-child {
+  text-align: left;
+  border-right: 0 !important;
 }
 #items table td:nth-child(2) {
   text-align: left;
 }
+#items table td:last-child {
+  border-right: 0 !important;
+  padding-right: 20px !important;
+}
+
+.currency {
+  border-bottom: 4px solid #487774;
+  padding: 0 20px;
+}
+.currency span {
+  font-size: 11px;
+  font-style: italic;
+  color: #8b8b8b;
+  display: inline-block;
+  min-width: 20px;
+}
 
 #sums {
-  margin: 25px 30px 0 0;
-  background: url("../img/total-stripe-firebrick.png") right bottom no-repeat;
-}
-#sums table {
   float: right;
+  background: #8BA09E url("../img/left-arrow.png") -17px bottom no-repeat;
+  background-size: auto 100px;
+  color: white;
 }
 #sums table tr th, #sums table tr td {
   min-width: 100px;
-  padding: 9px 8px;
+  padding: 8px 20px 8px 35px;
   text-align: right;
+  font-weight: 600;
 }
 #sums table tr th {
-  font-weight: bold;
   text-align: left;
-  padding-right: 35px;
-}
-#sums table tr td.last {
-  min-width: 0 !important;
-  max-width: 0 !important;
-  width: 0 !important;
-  padding: 0 !important;
-  border: none !important;
+  padding-right: 25px;
 }
 #sums table tr.amount-total th {
   text-transform: uppercase;
 }
 #sums table tr.amount-total th, #sums table tr.amount-total td {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
 }
 #sums table tr:last-child th {
   text-transform: uppercase;
 }
 #sums table tr:last-child th, #sums table tr:last-child td {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
-  color: white;
-}
-
-#invoice-info {
-  float: left;
-  margin: 50px 40px 0 60px;
-}
-#invoice-info > div > span {
-  display: inline-block;
-  min-width: 20px;
-  min-height: 18px;
-  margin-bottom: 3px;
-}
-#invoice-info > div > span:first-child {
-  color: black;
-}
-#invoice-info > div > span:last-child {
-  color: #aaa;
-}
-#invoice-info:after {
-  content: '';
-  display: block;
-  clear: both;
+  padding-top: 20px !important;
+  padding-bottom: 40px !important;
 }
 
 #terms {
-  float: left;
-  margin-top: 50px;
+  margin: 50px 20px 10px 20px;
 }
-#terms .notes {
-  min-height: 30px;
-  min-width: 50px;
-  color: #B32C39;
-}
-#terms .payment-info div {
-  margin-bottom: 3px;
-  min-width: 20px;
-}
-
-.thank-you {
-  margin: 10px 0 30px 0;
+#terms > span {
   display: inline-block;
   min-width: 20px;
-  text-transform: uppercase;
   font-weight: bold;
-  line-height: 0.88em;
-  float: right;
-  padding: 0px 30px 0px 2px;
-  font-size: 50px;
-  background: #F4846F;
-  color: white;
+}
+#terms > div {
+  margin-top: 10px;
+  min-height: 50px;
+  min-width: 50px;
+}
+
+.payment-info {
+  margin: 0 20px;
+}
+.payment-info div {
+  font-size: 12px;
+  color: #8b8b8b;
+  display: inline-block;
+  min-width: 20px;
 }
 
 .ib_bottom_row_commands {
-  margin-left: 30px !important;
+  margin: 10px 0 0 20px !important;
+}
+
+.ibcl_tax_value:before {
+  color: white !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 20px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+table th {
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+table td {
+  text-align: right;
+}
+
+table td h3{
+  color: #57B223;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+table .no {
+  color: #FFFFFF;
+  font-size: 1.6em;
+  background: #57B223;
+}
+
+table .desc {
+  text-align: left;
+}
+
+table .unit {
+  background: #DDDDDD;
+}
+
+table .qty {
+}
+
+table .total {
+  background: #57B223;
+  color: #FFFFFF;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+table tbody tr:last-child td {
+  border: none;
+}
+
+table tfoot td {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap;
+  border-top: 1px solid #AAAAAA;
+}
+
+table tfoot tr:first-child td {
+  border-top: none;
+}
+
+table tfoot tr:last-child td {
+  color: #57B223;
+  font-size: 1.4em;
+  border-top: 1px solid #57B223;
+
+}
+
+table tfoot tr td:first-child {
+  border: none;
 }
 
 /**
@@ -503,6 +584,4 @@ table th, table td {
 @media print {
   /* Here goes your print styles */
 }
-</style>
-  </body>
-</html>
+
