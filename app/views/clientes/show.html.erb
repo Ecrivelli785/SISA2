@@ -1,65 +1,67 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
+<div class="d-flex justify-content-between bd-highlight mb-3">
+  <div>
+    <p>
+      <strong>Apellido:</strong>
+      <%= @cliente.apellido %>
+    </p>
 
-<p>
-  <strong>Apellido:</strong>
-  <%= @cliente.apellido %>
-</p>
+    <p>
+      <strong>Nombre:</strong>
+      <%= @cliente.nombre %>
+    </p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @cliente.nombre %>
-</p>
+    <p>
+      <strong>Domicilio:</strong>
+      <%= @cliente.domicilio %>
+    </p>
 
-<p>
-  <strong>Domicilio:</strong>
-  <%= @cliente.domicilio %>
-</p>
+    <p>
+      <strong>Telefono:</strong>
+      <%= @cliente.telefono %>
+    </p>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @cliente.telefono %>
-</p>
+    <p>
+      <strong>Celular:</strong>
+      <%= @cliente.celular %>
+    </p>
 
-<p>
-  <strong>Celular:</strong>
-  <%= @cliente.celular %>
-</p>
+    <p>
+      <strong>Rubro:</strong>
+      <%= @cliente.rubro %>
+    </p>
 
-<p>
-  <strong>Rubro:</strong>
-  <%= @cliente.rubro %>
-</p>
+    <p>
+      <strong>CUIT:</strong>
+      <%= @cliente.cuit %>
+    </p>
 
-<p>
-  <strong>CUIT:</strong>
-  <%= @cliente.cuit %>
-</p>
+    <p>
+      <strong>Correo:</strong>
+      <%= @cliente.correo %>
+    </p>
 
-<p>
-  <strong>Correo:</strong>
-  <%= @cliente.correo %>
-</p>
+    <p>
+      <strong>Observaciones cliente:</strong>
+      <%= @cliente.observaciones_cliente %>
+    </p>
 
-<p>
-  <strong>Observaciones cliente:</strong>
-  <%= @cliente.observaciones_cliente %>
-</p>
+    <p>
+      <strong>Rubro:</strong>
+      <%= @cliente.rubro %>
+    </p>
 
-<p>
-  <strong>Rubro:</strong>
-  <%= @cliente.rubro %>
-</p>
-
-<p>
-  <strong>Cliente tipo:</strong>
-  <%= @cliente.cliente_tipo %>
-</p>
-
+    <p>
+      <strong>Cliente tipo:</strong>
+      <%= @cliente.cliente_tipo %>
+    </p>
+</div>
+  <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', edit_certificado_path(@certificado),:class => "btn btn-success"%></div>
+</div>
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_cliente_path(@cliente),method: :get %></div>
-  <div class="p-2 bd-highlight">  <%= button_to 'Back', clientes_path, method: :get %></div>
-  <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', edit_certificado_path(@certificado)%></div>
+  <div class="p-2 bd-highlight">  <%= button_to 'Atrás', clientes_path, method: :get %></div>
 </div>
 </div>

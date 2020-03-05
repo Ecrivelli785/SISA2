@@ -26,7 +26,6 @@
     <%= @tecnico.telefono %>
   </p>
 
-
-  <%= link_to 'Edit', edit_tecnico_path(@tecnico) %> |
-  <%= link_to 'Back', tecnicos_path %>
+<%= link_to 'Edit', edit_tecnico_path(@tecnico),:class => "btn btn-secondary" %>
+<%= link_to 'Back', tecnicos_path,:class => "btn btn-secondary" %>
 </div>

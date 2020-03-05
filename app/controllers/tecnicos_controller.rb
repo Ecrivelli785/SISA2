@@ -28,7 +28,7 @@ class TecnicosController < ApplicationController
 
     respond_to do |format|
       if @tecnico.save
-        format.html { redirect_to @tecnico, notice: 'Tecnico was successfully created.' }
+        format.html { redirect_to @tecnico, notice: 'El tecnico fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @tecnico }
       else
         format.html { render :new }

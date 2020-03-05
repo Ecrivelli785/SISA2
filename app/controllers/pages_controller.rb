@@ -1,5 +1,13 @@
 class PagesController < ApplicationController
   def home
+     @certificados = Certificado.all
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
   end
 
   def calendario
