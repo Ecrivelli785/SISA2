@@ -4,7 +4,7 @@ class CertificadosController < ApplicationController
   # GET /certificados
   # GET /certificados.json
   def index
-    @certificados = Certificado.all
+    @certificados = Certificado.all.order(created_at: :desc)
     respond_to do |format|
       format.html
       format.json
@@ -29,7 +29,7 @@ class CertificadosController < ApplicationController
 
   # GET /certificados/new
   def new
-     
+
   end
 
   # GET /certificados/1/edit
@@ -41,11 +41,11 @@ class CertificadosController < ApplicationController
   # POST /certificados.json
   def create
     @certificado = Certificado.find(params[:id]).last
-    
+
     @certificado.update(certificado_params)
 
     @certificado.update estado: true
-    
+
     respond_to do |format|
       if @certificado.update(certificado_params)
         format.html { redirect_to @certificado, notice: 'El certificado fue creado' }
@@ -87,7 +87,7 @@ class CertificadosController < ApplicationController
 
   private
     #def set_cliente
-    #  @cliente = Cliente.find(params[:id])  
+    #  @cliente = Cliente.find(params[:id])
     #end
     # Use callbacks to share common setup or constraints between actions.
     def set_certificado

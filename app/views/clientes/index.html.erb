@@ -15,19 +15,21 @@
     <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
   </div>
 
-<div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:1000px">
+<div calss="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:100%">
 <table>
   <thead>
     <tr>
       <th>Apellido</th>
       <th>Nombre</th>
+      <th>Rubro</th>
       <th>Domicilio</th>
       <th>Telefono</th>
       <th>Celular</th>
-      <th>Rubro</th>
-      <th>Tipo Cliente</th>
       <th>CUIT</th>
       <th>Correo</th>
+      <th>Tipo Cliente</th>
+      <th>Detalle</th>
+      <th>Eliminar</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -38,15 +40,15 @@
         <tr>
           <td><%= cliente.apellido %></td>
           <td><%= cliente.nombre %></td>
+          <td><%= cliente.rubro %></td>
           <td><%= cliente.domicilio %></td>
           <td><%= cliente.telefono %></td>
           <td><%= cliente.celular %></td>
-          <td><%= cliente.rubro %></td>
-          <td><%= cliente.cliente_tipo %></td>
           <td><%= cliente.cuit %></td>
           <td><%= cliente.correo %></td>
-          <td><%= link_to  'Detalle', cliente %></td>
-          <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: "Estás seguro?" }  %></td>
+          <td><%= cliente.cliente_tipo %></td>
+          <td><%= link_to  'Detalle', cliente,:class => "btn btn-dark" %></td>
+          <td><%= link_to 'Eliminar', cliente,:class => "btn btn-dark", method: :delete, data: { confirm: "¿Estás seguro/a?" }  %></td>
         </tr>
       <% end %>
       <% end %>

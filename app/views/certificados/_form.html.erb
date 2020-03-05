@@ -8,8 +8,7 @@
       <div><%= f.input :superficie %></div>
       <div><%= f.input :codigo %></div>
     </div>
-      
-        <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
+     <%= f.input :droga, as: :radio_buttons, collection: Certificado::DROGA, wrapper: :vertical_collection_inline, label:'Tipo Droga'%>
     <%= f.input :tratamiento, as: :radio_buttons, collection: Certificado::TRATAMIENTO, wrapper: :vertical_collection_inline, label:'Tipo Tratamiento'%>
     <%= f.input :vector, as: :radio_buttons, collection: Certificado::VECTOR, wrapper: :vertical_collection_inline, label:'Tipo Vector'%>
     <div class="d-flex justify-content-between">
