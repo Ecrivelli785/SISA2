@@ -13,7 +13,13 @@
     <meta name="template-hash" content="f3142bbb0a1696d5caa932ecab0fc530">
     <%= wicked_pdf_stylesheet_link_tag %>
     <%= wicked_pdf_javascript_include_tag %>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/template.css">
+
   </head>
   <body>
     <div id="container">
@@ -21,7 +27,7 @@
           <span>SISA-Fumigaciones</span>
       </div>
         <div class="border-1">
-          <div class="company-subtitle d-flex justify-content-between">
+          <div class="company-subtitle my-3">
             <h1><strong>SISTEMA INTEGRAL DE SANEAMIENTO AMBIENTAL</strong></h1>
           </div>
           <div class="company-info">
@@ -29,13 +35,16 @@
             <div><p>ADMINISTRACIÓN & VENTAS: MANZANA N°748 LOTE N°8</p></div>
             <div><p>BARRIO SANTA ANA II - CP 4400-SALTA CAPITAL</p></div>
             <div><p>TELEFONOS: (0387) 4291082 - (0387) 4248560</p></div>
+            <br>
+            <div class="nro_certificado">
+              <h1><strong>N° de Certificado:  <%= @certificado.nro_certificado %></strong></h1>
+            </div>
           </div>
       </div>
 
       <section id="invoice-cliente">
         <div class="datos-cliente">
           <br>
-
           <span><strong>Fecha de aplicación:</strong> <%= @certificado.fecha_aplicacion %></span>
           <span><strong>Apellido y nombre:</strong>  <%= @certificado.cliente.apellido %> <%= @certificado.cliente.nombre%></span>
           <span><strong>Domicilio:</strong>  <%= @certificado.cliente.domicilio %></span>
@@ -45,15 +54,17 @@
         <div class="datos-cliente">
           <br>
           <span><strong>Hora Aplicación:</strong>  <%= @certificado.hora_aplicacion.strftime("%H:%M") %></span>
-          <span><strong>Telefono</strong> <%= @certificado.cliente.telefono %></span>
-          <span><strong>Celular</strong>  <%= @certificado.cliente.celular %></span>
+          <span><strong>Telefono:</strong> <%= @certificado.cliente.telefono %></span>
+          <span><strong>Celular:</strong>  <%= @certificado.cliente.celular %></span>
           <span><br></span>
+          <br>
+        </div>
+        <div class="datos-cliente">
+          <br>
           <span><strong><%= @certificado.codigo %></strong> </span>
         </div>
       </section>
-      <div>
-        <span></span>
-      </div>
+
        <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
@@ -87,152 +98,79 @@
          </thead>
       </table>
 
-      <div class="container-text">
+      <div class="container-antidoto" style="font-size: 15px">
         <p>Antídoto: 1 Piretroydes: Tratamietno Sintomático - Bromadilone: Vitamina K1 -DDVP:Sulfato de Atropina.
         Recomendaciones: 1 -mantener cerrado el ambiente tratado mínimo 4 horas, ventilar y lavar(sin lavandina) las superficies de uso culinario, etc.</p>
       </div>
-      <div class="container">
+<br>
+<br>
+      <div class="advertencia" >
         <h1><strong>La firma brinda garantía de satisfacción, validez 30 días corridosposteriores al servicio, sin excepción.</strong></h1>
         <p>GARANTÍA SUJETA A INSPECCIONES TECNICAS, A LAS CONDICIONES DE HIGIENE, EDILICIAS, CLIMATICAS, AL GRADO DE INFESTACION Y AL TIPO DE PLAGA - LA EFECTIVIDAD DEL SERVICIO NO DEPENDE DE LAS FECHAS DE APLICACIÓN Y VENCIMIENTO DE ESTE CERTIFICADO, SOLO DEL PLAN DE TRABAJO ACORDADO, COMERCIOS DONDE SE EXPENDA, ELABORE, FRACCIONES Y AMACENE ALIMENTOS, LA CERTIFICACIÓN DE SERVICIOS NO SERA SUPERIOR A LOS 60 DÍAS, SEGÚN ORDENANZA N°12.157/04 -DECRETO N°917/98 DE LA MUNICIPALIDAD DE LA CIUDAD DE SALTA.</p>
       </div>
-      <div class="container">
-        <h1><strong>OBSERVACIONES:</strong></h1>
+<br>
+<br>
+      <div class="observaciones">
+        <h1 class="border my-3 pb-5" style="font-size:15px"><strong>OBSERVACIONES:</strong></h1>
       </div>
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h1><strong><%= @certificado.fecha_vencimiento %></strong></h1>
-        <h1><strong>FECHA DE VENCIMIENTO</strong></h1>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1>RECIBE CONFORME</h1>
-      </div>
-      <div>
-        <h1><strong><%= @certificado.fecha_vencimiento %></strong></h1>
-        <h1><strong>FECHA DE VENCIMIENTO</strong></h1>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1>Por S.I.S.A Gerente o Técnico</h1>
-      </div>
-    </div>
-  </div>
+      <br>
+      <br>
+      <br>
+      <br>
 
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <section id="firma">
+        <div class="col-3 k">
+            <h1><strong style="font-size:15px">FECHA DE VENCIMIENTO</strong></h1>
+            <h1><strong style="font-size:15px"><%= @certificado.fecha_vencimiento %></strong></h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="border-top" style="font-size:15px"><strong>RECIBE CONFORME</strong></h1>
+          </div>
+          <div class="col-3 k">
+            <h1><strong style="font-size:15px">FECHA DE VENCIMIENTO</strong></h1>
+            <h1><strong style="font-size:15px"><%= @certificado.fecha_vencimiento %></strong></h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="border-top" style="font-size:15px"><strong>Por S.I.S.A Gerente o Técnico</strong></h1>
+          </div>
+        </section>
+        </div>
+      </div>
+  </div>
   </body>
 </html>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700&subset=cyrillic,cyrillic-ext,latin,greek-ext,greek,latin-ext,vietnamese");
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-html {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-top:20px;
-  margin-bottom: 20px;
-}
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-q, blockquote {
-  quotes: none;
-}
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-a img {
-  border: none;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
-/* Invoice styles */
-/**
- * DON'T override any styles for the <html> and <body> tags, as this may break the layout.
- * Instead wrap everything in one main <div id="container"> element where you may change
- * something like the font or the background of the invoice
- */
-html, body {
-  /* MOVE ALONG, NOTHING TO CHANGE HERE! */
-}
-
-/**
- * IMPORTANT NOTICE: DON'T USE '!important' otherwise this may lead to broken print layout.
- * Some browsers may require '!important' in oder to work properly but be careful with it.
- */
-.clearfix {
-  display: block;
-  clear: both;
-}
-
-.hidden {
-  display: none;
-}
-
-b, strong, .bold {
-  font-weight: bold;
-}
-
-#container {
+  #container {
   font: normal 13px/1.4em 'Open Sans', Sans-serif;
   margin: 0 auto;
-  border: solid 1px;
+
 }
- .nro_certificado {
+ .nro_certificado h1{
  position: absolute;
- right: 40px;
- font-color: #8BA09E;
+ right: 90px;
+ top: 17px;
  margin-top: 5px;
  margin-bottom: 40px;
- font-size: 20px;
+ font-size: 18px;
+ color: white;
   }
 
 
 .company-name {
   background: #67BA2A 560px center no-repeat;
   background-size: 100px auto;
-  padding: 10px 20px;
+  padding: 15px 20px;
   position: relative;
-  margin: 20px;
+/*  margin: 20px;*/
 }
  .company-name span {
   color: white;
@@ -252,39 +190,15 @@ b, strong, .bold {
   background-size: auto 70px;
 }
 
-
-
-.company-nro-certificado {
-  background: #67BA2A 560px center no-repeat;
-  background-size: 100px auto;
-  padding: 5px 20px;
-  position: absolute;
-  right: 30px;
-  top: -40px;
-  margin: 20px;
-}
- .company-nro-certificado span {
-  color: white;
-  display: inline-block;
-  min-width: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1em;
-}
-
-.border-1 {
-  border-bottom: solid 1px:
-  margin-bottom: 20px;
-}
- .company-subtitle {
-  margin-left: 20px;
+ .company-subtitle h1 {
+/*  margin-left: 20px;*/
   font-size: 20px;
   color: 000;
   margin-bottom: 15px;
 }
 
  .company-info {
-  margin-left: 20px;
+/*  margin-left: 20px;*/
   font-size: 15px;
   color: 000;
 }
@@ -297,10 +211,31 @@ b, strong, .bold {
 }
 
 .datos-cliente span {
-  margin-left: 20px;
-  font-size: 15px;
+/*  margin-left: 20px;*/
+  font-size: 18px;
   margin-bottom: 15px;
 }
+
+#firma {
+  float: left;
+   width: 120%;
+}
+#firma > div {
+  float: left;
+}
+#firma div span  {
+  display: block;
+  white-space: nowrap;
+  min-width: 60px;
+  min-height: 18px;
+  margin-bottom: 3px;
+  margin-right: 80px;
+}
+#firma > div:last-child {
+  margin-left: 300px;
+}
+
+
 #invoice-cliente {
   float: left;
    border-top: solid 1px;
@@ -312,19 +247,14 @@ b, strong, .bold {
 #invoice-cliente div span  {
   display: block;
   white-space: nowrap;
-  min-width: 40px;
+  min-width: 60px;
   min-height: 18px;
   margin-bottom: 3px;
+  margin-right: 80px;
 }
 #invoice-cliente > div:last-child {
-  margin-left: 20px;
+  margin-left: 300px;
 }
-#invoice-cliente:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
 
 #client-info {
   float: right;
@@ -332,6 +262,8 @@ b, strong, .bold {
   min-width: 220px;
   text-align: right;
 }
+
+
 #client-info > div {
   margin-bottom: 3px;
   min-width: 20px;
@@ -347,7 +279,7 @@ b, strong, .bold {
 }
 #invoice-title-number span {
   display: inline-block;
-  min-width: 20px;
+  min-width: 50px;
 }
 #invoice-title-number #title {
   margin-right: 15px;
@@ -358,136 +290,6 @@ b, strong, .bold {
 #invoice-title-number #number {
   font-size: 15px;
   text-align: left;
-}
-
-table {
-  table-layout: fixed;
-
-}
-table th, table td {
-  vertical-align: top;
-  word-break: keep-all;
-  word-wrap: break-word;
-
-}
-
-#items {
-  margin: 20px 0 35px 0;
-}
-#items .first-cell, #items table th:first-child, #items table td:first-child {
-  width: 18px;
-  text-align: right;
-}
-#items table {
-  border-collapse: separate;
-  width: 100%;
-}
-#items table th {
-  padding: 12px 10px;
-  text-align: right;
-  background: #E6E7E7;
-  border-bottom: 4px solid #487774;
-}
-#items table th:nth-child(2) {
-  width: 30%;
-  text-align: left;
-}
-#items table th:last-child {
-  text-align: right;
-  padding-right: 20px !important;
-}
-#items table td {
-  padding: 15px 10px;
-  text-align: right;
-  border-right: 1px solid #CCCCCF;
-}
-#items table td:first-child {
-  text-align: left;
-  border-right: 0 !important;
-}
-#items table td:nth-child(2) {
-  text-align: left;
-}
-#items table td:last-child {
-  border-right: 0 !important;
-  padding-right: 20px !important;
-}
-
-.currency {
-  border-bottom: 4px solid #487774;
-  padding: 0 20px;
-}
-.currency span {
-  font-size: 11px;
-  font-style: italic;
-  color: #8b8b8b;
-  display: inline-block;
-  min-width: 20px;
-}
-
-#sums {
-  float: right;
-  background: #8BA09E url("../img/left-arrow.png") -17px bottom no-repeat;
-  background-size: auto 100px;
-  color: white;
-}
-#sums table tr th, #sums table tr td {
-  min-width: 100px;
-  padding: 8px 20px 8px 35px;
-  text-align: right;
-  font-weight: 600;
-}
-#sums table tr th {
-  text-align: left;
-  padding-right: 25px;
-}
-#sums table tr.amount-total th {
-  text-transform: uppercase;
-}
-#sums table tr.amount-total th, #sums table tr.amount-total td {
-  font-size: 16px;
-  font-weight: bold;
-}
-#sums table tr:last-child th {
-  text-transform: uppercase;
-}
-#sums table tr:last-child th, #sums table tr:last-child td {
-  font-size: 16px;
-  font-weight: bold;
-  padding-top: 20px !important;
-  padding-bottom: 40px !important;
-}
-
-#terms {
-  margin: 50px 20px 10px 20px;
-}
-#terms > span {
-  display: inline-block;
-  min-width: 20px;
-  font-weight: bold;
-}
-#terms > div {
-  margin-top: 10px;
-  min-height: 50px;
-  min-width: 50px;
-}
-
-.payment-info {
-  margin: 0 20px;
-}
-.payment-info div {
-  font-size: 12px;
-  color: #8b8b8b;
-  display: inline-block;
-  min-width: 20px;
-}
-
-.ib_bottom_row_commands {
-  margin: 10px 0 0 20px !important;
-}
-
-.ibcl_tax_value:before {
-  color: white !important;
 }
 
 table {
@@ -577,6 +379,17 @@ table tfoot tr td:first-child {
   border: none;
 }
 
+.advertencia h1 {
+  color:rgba(242, 38, 19, 1);
+  text-align: center;
+  font-size: 18px;
+   text-decoration: underline;
+}
+
+.advertencia p {
+  font-size: 15px;
+  padding: 5px;
+}
 /**
  * If the printed invoice is not looking as expected you may tune up
  * the print styles (you can use !important to override styles)
@@ -584,4 +397,4 @@ table tfoot tr td:first-child {
 @media print {
   /* Here goes your print styles */
 }
-
+</style>
