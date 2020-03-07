@@ -20,7 +20,7 @@
 
   <tbody>
     <% @results.each do |result| %>
-    <%if result.estado == true %>
+    <%if result.estado == true &&  result.hora_aplicacion != nil %>
       <tr>
         <div onclick="location.href='YOUR-URL-HERE';" style="cursor: pointer;">
         <ul>
@@ -32,7 +32,7 @@
         <td><%= result.superficie  %></td>
         <td><%= result.droga  %></td>
         <td><%= result.fecha_aplicacion  %></td>
-        <td><%= result.hora_aplicacion.strftime("%l:%M %p") %></td>
+        <td><%= result.hora_aplicacion %></td>
         <td><%= result.codigo  %></td>
          <td><%= button_to  'Detalle', result, method: :get %></td>
         <td><%= button_to 'Eliminar', certificado_path(result),method: :delete, data: { confirm: "Estás seguro?" }  %></td>
