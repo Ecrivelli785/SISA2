@@ -1,6 +1,6 @@
 class CertificadosController < ApplicationController
   before_action :set_certificado, only: [:show, :edit, :update, :destroy]
-  #before_action :set_cliente
+  
   # GET /certificados
   # GET /certificados.json
   def index
@@ -34,7 +34,7 @@ class CertificadosController < ApplicationController
 
   # GET /certificados/1/edit
   def edit
-    @certificado = Certificado.last
+    
   end
 
   # POST /certificados
@@ -48,7 +48,7 @@ class CertificadosController < ApplicationController
 
     respond_to do |format|
       if @certificado.update(certificado_params)
-        format.html { redirect_to @certificado, notice: 'El certificado fue creado' }
+        format.html { redirect_to @certificado, notice: 'El certificado fue creado.' }
         format.json { render :show, status: :ok, location: @certificado }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class CertificadosController < ApplicationController
   def update
     respond_to do |format|
       if @certificado.update(certificado_params)
-        format.html { redirect_to @certificado, notice: 'Certificado was successfully updated.' }
+        format.html { redirect_to @certificado, notice: 'El Certificado fue actualizado.' }
         format.json { render :show, status: :ok, location: @certificado }
       else
         format.html { render :edit }
@@ -74,21 +74,15 @@ class CertificadosController < ApplicationController
   # DELETE /certificados/1
   # DELETE /certificados/1.json
   def destroy
-    @certificado.destroy
+    @certificado.update estado: false
+
     respond_to do |format|
-      format.html { redirect_to certificados_url, notice: 'Certificado was successfully destroyed.' }
+      format.html { redirect_to certificados_url, notice: 'El Certificado fue eliminado.' }
       format.json { head :no_content }
     end
   end
 
-  def url
-    @url = root_url
-  end
-
   private
-    #def set_cliente
-    #  @cliente = Cliente.find(params[:id])
-    #end
     # Use callbacks to share common setup or constraints between actions.
     def set_certificado
       @certificado = Certificado.find(params[:id])

@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
-  get 'quejas/index'
-  get 'quejas/show'
-  get 'quejas/create'
-  get 'quejas/edit'
-  get 'quejas/update'
-  get 'quejas/destroy'
+  #get 'quejas/index'
+  #get 'quejas/show'
+  #get 'quejas/create'
+  #get 'quejas/edit'
+  #get 'quejas/update'
+  #get 'quejas/destroy'
+  
   root to: 'pages#home'
   get 'calendario', to: 'pages#calendario', as: :calendario
+
   resources :tecnicos
+  
   resources :certificados, except: [:new]
+  resources :quejas, except: [:new]
+
   resources :clientes do
     resources :certificados, only: [:new]
+    resources :quejas, only: [:new]
   end
-  resources :quejas
+  
   get 'proximas_fumigaciones', to: 'pages#proximas_fumigaciones', as: :proximas_fumigaciones
   get 'reportes', to: 'pages#reportes', as: :reportes
   get '/search' => 'pages#search', :as => 'search_page'
