@@ -41,7 +41,7 @@
               <td><%= queja.cliente.apellido %></td>
               <td><%= queja.observacion %></td>
               <td><%= queja.certificado.nro_certificado %></td>
-              <td><%= link_to 'Mostrar', queja,:class => "btn btn-dark"  %></td>
+              <td><%= link_to 'Detalle', queja,:class => "btn btn-dark"  %></td>
               <td><%= link_to 'Eliminar', queja, method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
             </tr>
           <% end %>

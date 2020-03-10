@@ -8,6 +8,7 @@
       <th>Apellido</th>
       <th>Nombre</th>
       <th>Domicilio</th>
+      <th>Barrio</th>
       <th>Rubro</th>
       <th>Tratamiento</th>
       <th>Vectores</th>
@@ -29,7 +30,8 @@
         <td><%= result.cliente.apellido  %></td>
         <td><%= result.cliente.nombre  %></td>
         <td><%= result.cliente.domicilio  %></td>
-        <td><%= result.cliente.rubro  %></td>
+        <td><%= result.cliente.barrio %></td>
+        <td><%= result.cliente.rubro[0,15]  %></td>
         <td><%= result.tratamiento  %></td>
         <td><%= result.vector  %></td>
         <td><%= result.superficie  %></td>
