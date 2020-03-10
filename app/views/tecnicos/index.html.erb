@@ -28,15 +28,17 @@
       </thead>
       <tbody>
         <% @tecnicos.each do |tecnico| %>
-          <tr>
-            <td><%= tecnico.dni %></td>
-            <td><%= tecnico.apellido %></td>
-            <td><%= tecnico.nombre %></td>
-            <td><%= tecnico.domicilio %></td>
-            <td><%= tecnico.telefono %></td>
-            <td><%= link_to 'Detalle', tecnico_path(tecnico),:class => "btn btn-dark" %></td>
-            <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
-          </tr>
+          <%if tecnico.estado == true %>      
+            <tr>
+              <td><%= tecnico.dni %></td>
+              <td><%= tecnico.apellido %></td>
+              <td><%= tecnico.nombre %></td>
+              <td><%= tecnico.domicilio %></td>
+              <td><%= tecnico.telefono %></td>
+              <td><%= link_to 'Detalle', tecnico_path(tecnico),:class => "btn btn-dark" %></td>
+              <td><%= link_to 'Eliminar', tecnico, method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
+            </tr>
+          <% end %>    
         <% end %>
       </tbody>
   </table>

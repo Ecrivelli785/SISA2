@@ -1,2 +1,49 @@
+Generate Model
+    rails new SISA01 -d postgresql
 
-<%= f.association :cliente, :include_blank => false, :label_method => lambda { |cliente| "#{cliente.nombre}  #{cliente.apellido} #{} #{cliente.cuit}" } %>
+    rails generate model Cliente apellido:string nombre:string domicilio:string celular:string barrio:string cuit:string correo:string telefono:string observaciones_cliente:string id_tipo_cliente:integer id_rubro:integer estado_mkt:integer estado:boolean
+
+    rails generate model Certificado nro_certificado:integer fecha_aplicacion:date fecha_vencimiento:date hora_aplicacion:time proximo_tratamiento:date id_rubro:integer id_tratamiento:integer id_vector:integer superficie:string id_drogas:integer codigo:string    id_tipo_cliente:integer observaciones_certificado:string id_tecnico:integer estado:boolean 
+
+	rails generate migration add_cliente_id_to_certificados cliente:references
+
+	rails db:create
+
+	rails db:migrate
+
+	rails generate migration agregar_index_a_clientes
+	add_index :clientes, :cuit
+	
+	rails generate migrations correo:string:index
+
+	rails generate controller Certificados index show create edit update destroy
+
+	rails generate controller Clientes index show create edit update destroy
+
+	#generando el modelo y controlador de Quejas
+
+	rails generate model Queja fecha_queja:date observacion:string 
+
+	rails generate migration add_cliente_id_to_quejas cliente:references
+	rails generate migration add_certificado_id_to_quejas certificado:references
+	
+	rails db:create
+	rails db:migrate
+
+	rails generate controller Quejas index show create edit update destroy
+
+	rails generate migration agregar_index_a_certificados
+	add_index :certificados, :nro_certificado
+
+	rails generate migration AddEstadoToQuejas estado:boolean
+
+#busqueda en quejas
+
+	$(function(){
+	var availableTags <% raw @auto %>;
+	$( "#search_nro_cert" ).autocomplete({
+			source: availableTags
+		});
+  	});
+
+$('#user_data').html("<%= j render 'data' %>");

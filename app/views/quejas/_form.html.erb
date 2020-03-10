@@ -1,0 +1,17 @@
+<%= simple_form_for(@queja) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs container queja-edit">
+    <div class="d-flex justify-content-between">
+      <div><%= f.input :fecha_queja %></div>
+      <div><%= f.input :observacion %></div>
+      <div><%= f.input :nro_certificado %></div>
+      <div><%= f.hidden_field :certificado_id %></div>
+      
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit%>
+  </div>
+<% end %>
