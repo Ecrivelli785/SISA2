@@ -7,74 +7,68 @@
 <br>
   <div>
     <p>
-      <strong>Nro de Certificado:</strong>
+      <strong class="font-weight-bold">Nro de Certificado:</strong>
       <%= @certificado.nro_certificado %>
     </p>
 
     <p>
-      <strong>Apellido:</strong>
+      <strong class="font-weight-bold">Apellido:</strong>
       <%= @certificado.cliente.apellido %>
     </p>
 
     <p>
-      <strong>Nombre:</strong>
+      <strong class="font-weight-bold">Nombre:</strong>
       <%= @certificado.cliente.nombre %>
     </p>
 
     <p>
-      <strong>Domicilio:</strong>
+      <strong class="font-weight-bold">Domicilio:</strong>
       <%= @certificado.cliente.domicilio %>
     </p>
 
     <p>
-      <strong>Tratamiento:</strong>
+      <strong class="font-weight-bold">Tratamiento:</strong>
       <%= @certificado.tratamiento %>
     </p>
 
     <p>
-      <strong>Vectores:</strong>
+      <strong class="font-weight-bold">Vectores:</strong>
       <%= @certificado.vector %>
     </p>
-
     <p>
-      <strong>Superficie:</strong>
+      <strong class="font-weight-bold">Superficie:</strong>
       <%= @certificado.superficie %>
     </p>
-
     <p>
-      <strong>Veneno:</strong>
+      <strong class="font-weight-bold">Veneno:</strong>
       <%= @certificado.droga %>
     </p>
-
     <p>
-      <strong>Código:</strong>
+      <strong class="font-weight-bold">Código:</strong>
       <%= @certificado.codigo %>
     </p>
-
     <p>
-      <strong>Fecha de aplicación:</strong>
+      <strong class="font-weight-bold">Fecha de aplicación:</strong>
       <%= @certificado.fecha_aplicacion %>
     </p>
-
     <p>
-      <strong>Hora de aplicación:</strong>
+      <strong class="font-weight-bold">Hora de aplicación:</strong>
       <%= @certificado.hora_aplicacion %>
     </p>
-
     <p>
-      <strong>Fecha de vencimiento:</strong>
+      <strong class="font-weight-bold">Fecha de vencimiento:</strong>
       <%= @certificado.fecha_vencimiento %>
     </p>
 
 <div class="d-flex justify-content-between bd-highlight mb-3">
   <div class="d-flex justify-content-between">
-    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_certificado_path(@certificado),method: :get %></div>
-    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', certificados_path, method: :get %></div>
+    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_certificado_path(@certificado),method: :get, :class => "btn btn-dark" %></div>
+    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', certificados_path, method: :get, :class => "btn btn-dark" %></div>
   </div>
 
   <div class="d-flex justify-content-between">
-    <div class="p-2 bd-highlight"><%= link_to "Imprimir Certificado", certificado_path(@certificado, format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-secondary" %></div>
-    <div class="p-2 bd-highlight"><%= link_to "Imprimir FAJA", clientes_path(format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-secondary" %></div>
+    <div class="p-2 bd-highlight"><%= link_to "Imprimir Certificado", certificado_path(@certificado, format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-success" %></div>
+    <div class="p-2 bd-highlight"><%= link_to "Imprimir FAJA", clientes_path(format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-success" %></div>
   </div>
 </div>
 </div>

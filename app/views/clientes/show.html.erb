@@ -4,46 +4,46 @@
   <div class="d-flex justify-content-between bd-highlight mb-3">
     <div>
       <p>
-        <strong>Apellido:</strong> <%= @cliente.apellido %>
+        <strong class="font-weight-bold">Apellido:</strong> <%= @cliente.apellido %>
       </p>
       <p>
-        <strong>Nombre:</strong> <%= @cliente.nombre %>
+        <strong class="font-weight-bold">Nombre:</strong> <%= @cliente.nombre %>
       </p>
       <p>
-        <strong>Domicilio:</strong> <%= @cliente.domicilio %>
+        <strong class="font-weight-bold">Domicilio:</strong> <%= @cliente.domicilio %>
       </p>
       <p>
-        <strong>Telefono:</strong> <%= @cliente.telefono %>
+        <strong class="font-weight-bold">Telefono:</strong> <%= @cliente.telefono %>
       </p>
       <p>
-        <strong>Celular:</strong> <%= @cliente.celular %>
+        <strong class="font-weight-bold">Celular:</strong> <%= @cliente.celular %>
       </p>
       <p>
-        <strong>Rubro:</strong> <%= @cliente.rubro %>
+        <strong class="font-weight-bold">Rubro:</strong> <%= @cliente.rubro %>
       </p>
       <p>
-        <strong>CUIT:</strong> <%= @cliente.cuit %>
+        <strong class="font-weight-bold">CUIT:</strong> <%= @cliente.cuit %>
       </p>
       <p>
-        <strong>Correo:</strong> <%= @cliente.correo %>
+        <strong class="font-weight-bold">Correo:</strong> <%= @cliente.correo %>
       </p>
       <p>
-        <strong>Observaciones cliente:</strong> <%= @cliente.observaciones_cliente %>
+        <strong class="font-weight-bold">Observaciones cliente:</strong> <%= @cliente.observaciones_cliente %>
       </p>
       <p>
-        <strong>Rubro:</strong> <%= @cliente.rubro %>
+        <strong class="font-weight-bold">Rubro:</strong> <%= @cliente.rubro %>
       </p>
       <p>
-        <strong>Cliente tipo:</strong> <%= @cliente.cliente_tipo %>
+        <strong class="font-weight-bold">Cliente tipo:</strong> <%= @cliente.cliente_tipo %>
       </p>
     </div>
-    <div> 
+    <div>
       <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', edit_certificado_path(@certificado),:class => "btn btn-success"%></div>
-      <div class="p-2 bd-highlight"> <%= link_to 'Agregar Reclamo', edit_queja_path(@queja),:class => "btn btn-success"%></div>
+      <div class="p-2 bd-highlight"> <%= link_to 'Agregar Reclamo', edit_queja_path(@queja), :class => "btn btn-success"%></div>
     </div>
   </div>
   <div class="d-flex bd-highlight mb-3">
-    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_cliente_path(@cliente),method: :get %></div>
-    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', clientes_path, method: :get %></div>
+    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_cliente_path(@cliente),method: :get, :class => "btn btn-dark" %></div>
+    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', clientes_path, method: :get, :class => "btn btn-dark" %></div>
   </div>
 </div>

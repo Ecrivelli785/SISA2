@@ -16,7 +16,7 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    
+
     @cliente = Cliente.find(params[:id])
 
     @certificado = Certificado.new
@@ -26,7 +26,7 @@ class ClientesController < ApplicationController
 
     @queja = Queja.new
     @queja.update cliente_id: params[:id]
-    @queja.update certificado_id: 62
+    @queja.update certificado_id: 43
 
     @queja.update estado: true
 
@@ -51,7 +51,7 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
-    
+
     @cliente.update estado: true
 
     respond_to do |format|

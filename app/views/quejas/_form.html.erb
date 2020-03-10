@@ -2,16 +2,13 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs container queja-edit">
-    <div class="d-flex justify-content-between">
-      <div><%= f.input :fecha_queja %></div>
-      <div><%= f.input :observacion %></div>
-      <div><%= f.input :nro_certificado %></div>
+      <div class="w-25"><strong><%= f.input :nro_queja, label:'N° Certificado' %></strong></div>
+      <div><strong><%= f.input :fecha_queja,  label:'Fecha de reclamo'%></div></strong>
+      <label><strong>Observaciones</strong></label>
+      <div class="mb-5 p-1"><%= f.input :observacion, label: false  %></div>
       <div><%= f.hidden_field :certificado_id %></div>
-      
-    </div>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit%>
+
+  <div class="form-actions my-5 justify-content-between">
+     <div><%= f.button :submit, name="Confirmar" ,:class => "btn btn-success"%></div>
   </div>
 <% end %>
