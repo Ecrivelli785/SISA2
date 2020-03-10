@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_122816) do
+
+ActiveRecord::Schema.define(version: 2020_03_10_124710) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_122816) do
     t.bigint "cliente_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "turno"
     t.index ["cliente_id"], name: "index_certificados_on_cliente_id"
     t.index ["nro_certificado"], name: "index_certificados_on_nro_certificado"
   end
@@ -49,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_122816) do
     t.string "cliente_tipo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "barrio"
   end
 
   create_table "quejas", force: :cascade do |t|

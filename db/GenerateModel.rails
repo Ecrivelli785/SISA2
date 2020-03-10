@@ -37,6 +37,10 @@ Generate Model
 
 	rails generate migration AddEstadoToQuejas estado:boolean
 
+	rails generate migration AddBarrioToClientes barrio:string
+
+	rails generate migration AddTurnoToCertificados turno:string	
+
 #busqueda en quejas
 
 	$(function(){
@@ -47,3 +51,6 @@ Generate Model
   	});
 
 $('#user_data').html("<%= j render 'data' %>");
+
+# Dropdown en certificados 
+<%= f.select(:turno, options_for_select([['C','C'],['F','F']])) %>

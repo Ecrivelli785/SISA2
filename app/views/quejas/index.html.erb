@@ -8,17 +8,17 @@
         <span class="close">&times;</span>
         <h5>Ingrese datos del cliente</h5>
         <%= form_tag(search_page_path, :method => "get") do %>
-        <div class="input-group my-3">
-          <%= search_field_tag :search, params[:search], placeholder: "Ingrese CUIT u otro dato del cliente", class: "form-control" %>
-        </div>
-      <% end %>
+          <div class="input-group my-3">
+            <%= search_field_tag :search, params[:search], placeholder: "Ingrese CUIT u otro dato del cliente", class: "form-control" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
   <%= form_tag(searchqueja_page_path, :method => "get",:calss => "btnn") do %>
-  <div class="input-group my-3">
-    <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
-  </div>
+    <div class="input-group my-3">
+      <%= search_field_tag :search, params[:search], placeholder: "Buscar...", class: "form-control" %>
+    </div>
   <% end %>
   <div class="container" style="overflow-y: scroll; height:500px; overflow-x: scroll; width:100%">
     <table>

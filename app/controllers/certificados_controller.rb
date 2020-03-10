@@ -90,6 +90,6 @@ class CertificadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def certificado_params
-      params.require(:certificado).permit(:nro_certificado, :fecha_aplicacion, :fecha_vencimiento, :hora_aplicacion, :tratamiento, :vector, :superficie, :droga, :codigo, :observaciones_certificado, :estado, :cliente_id, cliente_attributes: [:cliente_id, :apellido, :cliente_tipo, :nombre, :domicilio, :telefono, :celular, :barrio, :estado, :rubro, :cuit, :correo])
+      params.require(:certificado).permit(:nro_certificado, :fecha_aplicacion, :fecha_vencimiento, :hora_aplicacion, :tratamiento, :vector, :superficie, :droga, :codigo, :turno, :observaciones_certificado, :estado, :cliente_id, cliente_attributes: [:cliente_id, :apellido, :cliente_tipo, :nombre, :domicilio, :telefono, :celular, :barrio, :estado, :rubro, :cuit, :correo])
     end
 end
