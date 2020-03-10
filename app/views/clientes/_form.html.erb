@@ -1,38 +1,39 @@
 <%= simple_form_for(@cliente) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
   <div class="form-inputs cliente-new-form">
-  <div class="row">
-    <div class="col-sm">
-      <div><%= f.input :apellido %></div>
+    <div class="row">
+      <div class="col-sm">
+        <div><%= f.input :apellido %></div>
+      </div>
+      <div class="col-sm">
+        <div><%= f.input :nombre %></div>
+      </div>
+      <div class="col-sm">
+        <div><%= f.input :cuit %></div>
+      </div>
     </div>
-    <div class="col-sm">
-      <div><%= f.input :nombre %></div>
+    <div class="row">
+      <div class="col-sm">
+        <div><%= f.input :domicilio %> </div>
+      </div>
+      <div class="col-sm">
+        <div><%= f.input :barrio %></div>
+      </div>
+      <div class="col-sm">
+        <div><%= f.input :correo %></div>
+      </div>  
     </div>
-    <div class="col-sm">
-      <div><%= f.input :cuit %></div>
+     <%= f.input :cliente_tipo, as: :radio_buttons, collection: Cliente::CLIENTE_TIPO, wrapper: :vertical_collection_inline, label:'Tipo Cliente'%>
+    <div class="row">
+      <div class="col-sm">
+        <div><%= f.input :telefono %></div>
+      </div>
+      <div class="col-sm">
+        <div>  <%= f.input :celular %> </div>
+      </div>
     </div>
+      <%= f.input :rubro %>
   </div>
-  <div class="row">
-    <div class="col-sm">
-      <div><%= f.input :domicilio %> </div>
-    </div>
-    <div class="col-sm">
-      <div><%= f.input :correo %></div>
-    </div>
-  </div>
-    <%= f.input :cliente_tipo, as: :radio_buttons, collection: Cliente::CLIENTE_TIPO, wrapper: :vertical_collection_inline, label:'Tipo Cliente'%>
-  <div class="row">
-    <div class="col-sm">
-      <div><%= f.input :telefono %></div>
-    </div>
-    <div class="col-sm">
-      <div>  <%= f.input :celular %> </div>
-    </div>
-  </div>
-    <%= f.input :rubro %>
-    </div>
     <%= f.button :submit, placeholder: "Crear" %>
-  </div>
 <% end %>

@@ -13,6 +13,9 @@
         <strong>Domicilio:</strong> <%= @cliente.domicilio %>
       </p>
       <p>
+        <strong>Barrio:</strong> <%= @cliente.barrio %>
+      </p>
+      <p>
         <strong>Telefono:</strong> <%= @cliente.telefono %>
       </p>
       <p>
@@ -36,6 +39,7 @@
       <p>
         <strong>Cliente tipo:</strong> <%= @cliente.cliente_tipo %>
       </p>
+
     </div>
     <div> 
       <div class="p-2 bd-highlight"> <%= link_to 'Crear Certificado', edit_certificado_path(@certificado),:class => "btn btn-success"%></div>
