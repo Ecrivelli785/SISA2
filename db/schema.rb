@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_124710) do
     t.bigint "cliente_id", null: false
     t.bigint "certificado_id", null: false
     t.boolean "estado"
+    t.integer "nro_queja"
     t.index ["certificado_id"], name: "index_quejas_on_certificado_id"
     t.index ["cliente_id"], name: "index_quejas_on_cliente_id"
   end

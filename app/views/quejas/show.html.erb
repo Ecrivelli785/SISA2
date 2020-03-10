@@ -6,19 +6,24 @@
 <br>
 <br>
   <div>
-    <p> <strong>Fecha Reclamo:</strong> <%= @queja.fecha_queja %> </p>
-	<p> <strong>Nombre:</strong> <%= @queja.cliente.nombre %> </p>
-	<p> <strong>Apellido:</strong> <%= @queja.cliente.apellido %> </p>
-	<p> <strong>Descripcion:</strong> <%= @queja.observacion %> </p>
-	<p> <strong>Nro Certificado:</strong> <%= @queja.certificado.nro_certificado %> </p>
-      
+  <label> <strong>Fecha Reclamo:</strong> </label>
+    <p><%= @queja.fecha_queja %> </p>
+  <label> <strong>Nombre:</strong> </label>
+	   <p><%= @queja.cliente.nombre %> </p>
+  <label> <strong>Apellido:</strong> </label>
+	   <p><%= @queja.cliente.apellido %> </p>
+  <label> <strong>Nro Certificado:</strong> </label>
+	   <p> <%= @queja.certificado.nro_certificado %> </p>
+  <label><strong>Descripcion:</strong></label>
+	   <p class="my-1 mb-4 pb-5 border"><%= @queja.observacion %> </p>
+
 <div class="d-flex justify-content-between bd-highlight mb-3">
   <div class="d-flex justify-content-between">
-    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_queja_path(@queja),method: :get %></div>
-    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', quejas_path, method: :get %></div>
+    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_queja_path(@queja),method: :get, :class => "btn btn-dark" %></div>
+    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', quejas_path, method: :get, :class => "btn btn-dark" %></div>
   </div>
 
-  
+
 </div>
 </div>
 </div>

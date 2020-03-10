@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Editar datos de Tecnico</h1>
+  <h1>Editar datos de Técnico</h1>
 
   <%= render 'form', tecnico: @tecnico %>
-
-  <%= link_to 'Mostrar', @tecnico %> |
-  <%= link_to 'Atras', tecnicos_path %>
+<div class="my-3">
+  <%= link_to 'Atras', tecnico_path(@tecnico), :class => "btn btn-dark" %>
+</div>
 </div>

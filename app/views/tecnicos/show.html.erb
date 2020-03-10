@@ -2,30 +2,30 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Dni:</strong>
+    <strong class="font-weight-bold">Dni:</strong>
     <%= @tecnico.dni %>
   </p>
 
   <p>
-    <strong>Apellido:</strong>
+    <strong class="font-weight-bold">Apellido:</strong>
     <%= @tecnico.apellido %>
   </p>
 
   <p>
-    <strong>Nombre:</strong>
+    <strong class="font-weight-bold">Nombre:</strong>
     <%= @tecnico.nombre %>
   </p>
 
   <p>
-    <strong>Domicilio:</strong>
+    <strong class="font-weight-bold">Domicilio:</strong>
     <%= @tecnico.domicilio %>
   </p>
 
   <p>
-    <strong>Telefono:</strong>
+    <strong class="font-weight-bold">Telefono:</strong>
     <%= @tecnico.telefono %>
   </p>
 
-<%= link_to 'Edit', edit_tecnico_path(@tecnico),:class => "btn btn-secondary" %>
-<%= link_to 'Back', tecnicos_path,:class => "btn btn-secondary" %>
+<%= link_to 'Editar', edit_tecnico_path(@tecnico),:class => "btn btn-dark" %>
+<%= link_to 'Atrás', tecnicos_path,:class => "btn btn-dark" %>
 </div>

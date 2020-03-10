@@ -22,8 +22,9 @@
       </div>
       <div class="col-sm">
         <div><%= f.input :correo %></div>
-      </div>  
+      </div>
     </div>
+    <!-- div row line 16 -->
      <%= f.input :cliente_tipo, as: :radio_buttons, collection: Cliente::CLIENTE_TIPO, wrapper: :vertical_collection_inline, label:'Tipo Cliente'%>
     <div class="row">
       <div class="col-sm">
@@ -33,7 +34,11 @@
         <div>  <%= f.input :celular %> </div>
       </div>
     </div>
+    <!-- div row line 28 -->
       <%= f.input :rubro %>
   </div>
-    <%= f.button :submit, placeholder: "Crear" %>
+  <!-- div form-inputs cliente-new-form -->
+   <div>
+    <%= f.button :submit,name="Confirmar",:class => "btn btn-success"  %>
+  </div>
 <% end %>

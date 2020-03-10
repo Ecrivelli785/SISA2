@@ -34,7 +34,8 @@
   <thead>
     <tr>
       <th>Nro certificado</th>
-      <th>Apellido y Nombre</th>
+      <th>Apellido</th>
+      <th>Nombre</th>
       <th>Domicilio</th>
       <th>Rubro</th>
       <th>Tratamiento</th>
@@ -53,9 +54,10 @@
       <%if certificado.estado == true &&  certificado.hora_aplicacion != nil%>
         <tr>
           <td><%= certificado.nro_certificado %></td>
-          <td><%= certificado.cliente.apellido && certificado.cliente.nombre %></td>
+          <td><%= certificado.cliente.apellido%></td>
+          <td><%= certificado.cliente.nombre  %></td>
           <td><%= certificado.cliente.domicilio %></td>
-          <td><%= certificado.cliente.rubro %></td>
+          <td><%= certificado.cliente.rubro[0,15] %></td>
           <td><%= certificado.tratamiento %></td>
           <td><%= certificado.vector %></td>
           <td><%= certificado.superficie %></td>
