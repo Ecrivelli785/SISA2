@@ -36,3 +36,14 @@ Generate Model
 	add_index :certificados, :nro_certificado
 
 	rails generate migration AddEstadoToQuejas estado:boolean
+
+#busqueda en quejas
+
+	$(function(){
+	var availableTags <% raw @auto %>;
+	$( "#search_nro_cert" ).autocomplete({
+			source: availableTags
+		});
+  	});
+
+$('#user_data').html("<%= j render 'data' %>");
