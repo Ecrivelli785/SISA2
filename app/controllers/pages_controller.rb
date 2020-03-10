@@ -10,6 +10,18 @@ class PagesController < ApplicationController
     end
   end
 
+  def proximas_fumigaciones
+    @certificados = Certificado.all.where("DATE(fecha_vencimiento) >= ?", Date.today - 1.day).order(fecha_vencimiento: :ASC)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render template: 'certificados/pdf', pdf: 'Reporte'
+      end
+    end
+  end
+
+
   def calendario
 
   end
