@@ -24,11 +24,14 @@ class TecnicosController < ApplicationController
   # POST /tecnicos
   # POST /tecnicos.json
   def create
+    
     @tecnico = Tecnico.new(tecnico_params)
 
+    @tecnico.update estado: true
+    
     respond_to do |format|
       if @tecnico.save
-        format.html { redirect_to @tecnico, notice: 'El tecnico fue exitosamente creado.' }
+        format.html { redirect_to @tecnico, notice: 'Los datos del Técnico fueron creados.' }
         format.json { render :show, status: :created, location: @tecnico }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class TecnicosController < ApplicationController
   def update
     respond_to do |format|
       if @tecnico.update(tecnico_params)
-        format.html { redirect_to @tecnico, notice: 'Tecnico was successfully updated.' }
+        format.html { redirect_to @tecnico, notice: 'Los datos del Técnico fueron actualizados.' }
         format.json { render :show, status: :ok, location: @tecnico }
       else
         format.html { render :edit }
@@ -54,9 +57,10 @@ class TecnicosController < ApplicationController
   # DELETE /tecnicos/1
   # DELETE /tecnicos/1.json
   def destroy
-    @tecnico.destroy
+
+    @tecnico.update estado: false
     respond_to do |format|
-      format.html { redirect_to tecnicos_url, notice: 'Tecnico was successfully destroyed.' }
+      format.html { redirect_to tecnicos_url, notice: 'Los datos del Técnico fueron eliminados.' }
       format.json { head :no_content }
     end
   end

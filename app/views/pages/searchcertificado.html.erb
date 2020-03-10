@@ -34,8 +34,8 @@
         <td><%= result.fecha_aplicacion  %></td>
         <td><%= result.hora_aplicacion %></td>
         <td><%= result.codigo  %></td>
-         <td><%= button_to  'Detalle', result, method: :get %></td>
-        <td><%= button_to 'Eliminar', certificado_path(result),method: :delete, data: { confirm: "Estás seguro?" }  %></td>
+        <td><%= link_to 'Detalle', result,:class => "btn btn-dark" %></td>
+        <td><%= link_to 'Eliminar', certificado_path(result), method: :delete, data: { confirm: '¿Estás seguro/a?' },:class => "btn btn-dark" %></td>
       </div>
         </tr>
     <% end %>

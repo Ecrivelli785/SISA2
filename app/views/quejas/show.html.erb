@@ -1,0 +1,24 @@
+<div class="container"></div>
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Detalles del Reclamo</h1>
+<br>
+<br>
+  <div>
+    <p> <strong>Fecha Reclamo:</strong> <%= @queja.fecha_queja %> </p>
+	<p> <strong>Nombre:</strong> <%= @queja.cliente.nombre %> </p>
+	<p> <strong>Apellido:</strong> <%= @queja.cliente.apellido %> </p>
+	<p> <strong>Descripcion:</strong> <%= @queja.observacion %> </p>
+	<p> <strong>Nro Certificado:</strong> <%= @queja.certificado.nro_certificado %> </p>
+      
+<div class="d-flex justify-content-between bd-highlight mb-3">
+  <div class="d-flex justify-content-between">
+    <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_queja_path(@queja),method: :get %></div>
+    <div class="p-2 bd-highlight">  <%= button_to 'Atrás', quejas_path, method: :get %></div>
+  </div>
+
+  
+</div>
+</div>
+</div>
