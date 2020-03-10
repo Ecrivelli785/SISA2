@@ -39,6 +39,9 @@
             <div class="nro_certificado">
               <h1><strong>N° de Certificado:  <%= @certificado.nro_certificado %></strong></h1>
             </div>
+            <div class="turno">
+              <h1><strong>  <%= @certificado.turno %></strong></h1>
+            </div>
           </div>
       </div>
 
@@ -164,6 +167,15 @@
  color: white;
   }
 
+ .turno h1{
+ position: absolute;
+ right: 90px;
+ top: 90px;
+ margin-top: 5px;
+ margin-bottom: 40px;
+ font-size: 30px;
+ color: black;
+  }
 
 .company-name {
   background: #67BA2A 560px center no-repeat;
