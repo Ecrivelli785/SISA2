@@ -26,7 +26,7 @@ class ClientesController < ApplicationController
 
     @queja = Queja.new
     @queja.update cliente_id: params[:id]
-    @queja.update certificado_id: 43
+    @queja.update certificado_id: 62
 
     @queja.update estado: true
 
