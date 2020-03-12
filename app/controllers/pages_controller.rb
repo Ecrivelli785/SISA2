@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def proximas_fumigaciones
-    @certificados = Certificado.all.where("DATE(fecha_vencimiento) >= ?", Date.today - 1.day).order(fecha_vencimiento: :ASC)
+    @certificados = Certificado.all.where("DATE(fecha_vencimiento) <= ?", 120.days.from_now).order(fecha_vencimiento: :ASC)
     respond_to do |format|
       format.html
       format.json
