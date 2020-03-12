@@ -21,8 +21,8 @@
         <td><%= result.domicilio %></td>
         <td><%= result.telefono %></td>
         <td><%= result.dni %></td>
-        <td><%= button_to  'Detalle', result, method: :get %></td>
-        <td><%= button_to 'Eliminar', tecnico_path(result),method: :delete, data: { confirm: "Estás seguro?" }  %></td>
+        <td><%= button_to  'Detalle', result, method: :get, :class => "btn btn-dark"  %></td>
+        <td><%= button_to 'Eliminar', tecnico_path(result),method: :delete, data: { confirm: "Estás seguro?" },:class => "btn btn-dark"   %></td>
     <% end %>
   </tbody>
 </table>

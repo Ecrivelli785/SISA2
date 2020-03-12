@@ -4,7 +4,7 @@ class QuejasController < ApplicationController
   # GET /quejas
   # GET /quejas.json
   def index
-    @quejas = Queja.all 
+    @quejas = Queja.all
   end
 
   # GET /quejas/1
@@ -15,7 +15,7 @@ class QuejasController < ApplicationController
 
   # GET /quejas/new
   def new
-    
+
   end
 
   # GET /quejas/1/edit
@@ -40,7 +40,7 @@ class QuejasController < ApplicationController
         format.html { render :edit }
         format.json { render json: @queja.errors, status: :unprocessable_entity }
       end
-    end    
+    end
   end
 
   # PATCH/PUT /quejas/1
@@ -76,6 +76,6 @@ class QuejasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def queja_params
-      params.require(:queja).permit(:fecha_queja, :observacion, :cliente_id, :certificado_id, :estado, cliente_attributes: [:cliente_id, :apellido, :cliente_tipo, :nombre, :domicilio, :telefono, :celular, :barrio, :estado, :rubro, :cuit, :correo], certificado_attributes: [:nro_certificado, :fecha_aplicacion, :fecha_vencimiento, :hora_aplicacion, :tratamiento, :vector, :superficie, :droga, :codigo, :observaciones_certificado, :estado, :cliente_id])
+      params.require(:queja).permit(:fecha_queja, :observacion, :cliente_id, :nro_queja, :certificado_id, :estado, cliente_attributes: [:cliente_id, :apellido, :cliente_tipo, :nombre, :domicilio, :telefono, :celular, :barrio, :estado, :rubro, :cuit, :correo], certificado_attributes: [:nro_certificado, :fecha_aplicacion, :fecha_vencimiento, :hora_aplicacion, :tratamiento, :vector, :superficie, :droga, :codigo, :observaciones_certificado, :estado, :cliente_id])
     end
 end
