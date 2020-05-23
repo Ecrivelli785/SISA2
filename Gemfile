@@ -49,3 +49,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Gems used only for assets and not required
+# in production environments by default.
+#group :assets do
+  
+  
+  gem 'uglifier', '>= 1.0.3'
+#end
+gem 'jquery-rails'
