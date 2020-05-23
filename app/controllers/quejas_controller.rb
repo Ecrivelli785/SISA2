@@ -20,7 +20,8 @@ class QuejasController < ApplicationController
 
   # GET /quejas/1/edit
   def edit
-
+    
+    #@certificado = Certificado.where("cliente_id =", @queja.cliente_id ,"and nro_certificado > 0")
   end
 
   # POST /quejas
@@ -31,6 +32,16 @@ class QuejasController < ApplicationController
     @queja.update(queja_params)
 
     @queja.update estado: true
+    
+    #Busqueda del id de certificado a partir del nro de queja
+    #@nro_cert = search_nrocert(@queja.nro_queja)
+    #puts @nro_cert
+    #if @nro_cert.blank?
+    #  redirect_to(edit_quejas_path, alert: "Nro de Certificado no coincide") and return
+    #else
+    #  @queja.update certificado_id: @nro_cert.id
+    #end
+    #Fin busqueda del id de certificado a partir del nro de queja
 
     respond_to do |format|
       if @queja.update(queja_params)
@@ -47,6 +58,7 @@ class QuejasController < ApplicationController
   # PATCH/PUT /quejas/1.json
   def update
         respond_to do |format|
+
       if @queja.update(queja_params)
         format.html { redirect_to @queja, notice: 'EL reclamo fue exitosamente actualizado.' }
         format.json { render :show, status: :ok, location: @queja }
@@ -61,7 +73,8 @@ class QuejasController < ApplicationController
 # DELETE /quejas/1
   # DELETE /quejas/1.json
   def destroy
-    @queja.destroy
+    @queja.update estado: false
+
     respond_to do |format|
       format.html { redirect_to quejas_url, notice: 'El reclamo fue eliminado.' }
       format.json { head :no_content }

@@ -23,7 +23,9 @@ module SISA2
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
     # Los config agregados son para la hora
+
     config.time_zone = 'Buenos Aires'
     config.active_record.default_timezone = :local
 
@@ -36,3 +38,10 @@ module SISA2
     config.generators.system_tests = nil
   end
 end
+
+#class Application < Rails::Application
+    #Dir["#{Rails.root}/lib/**/**/*.rb"].each { |f| require f }
+ #   config.time_zone = 'Buenos Aires'
+  #  config.active_record.default_timezone = :local
+    #config.active_record.raise_in_transactional_callbacks = true
+#end

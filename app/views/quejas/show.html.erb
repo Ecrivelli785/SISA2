@@ -13,10 +13,11 @@
   <label> <strong>Apellido:</strong> </label>
 	   <p><%= @queja.cliente.apellido %> </p>
   <label> <strong>Nro Certificado:</strong> </label>
-	   <p> <%= @queja.certificado.nro_certificado %> </p>
+	   <p> <%= @queja.nro_queja %> </p>
+  <label> <strong>Nro REAL Certificado:</strong> </label>
+     <p> <%= @queja.certificado_id %> </p>     
   <label><strong>Descripcion:</strong></label>
 	   <p class="my-1 mb-4 pb-5 border"><%= @queja.observacion %> </p>
-
 <div class="d-flex justify-content-between bd-highlight mb-3">
   <div class="d-flex justify-content-between">
     <div class="p-2 bd-highlight"><%= button_to  'Editar', edit_queja_path(@queja),method: :get, :class => "btn btn-dark" %></div>

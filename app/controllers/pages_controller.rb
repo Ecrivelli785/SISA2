@@ -78,6 +78,20 @@ class PagesController < ApplicationController
     puts @auto.inspect
   end
 
+  #def search_nrocert(nro_cert)
+  #  if params[:nro_cert].blank?
+  #    redirect_to(edit_quejas_path, alert: "Campo vacio!") and return
+  #  else
+  #    @parameter = params[:nro_cert]
+  #    @certificado = Certificado.all.where("nro_certificado LIKE:search",nro_cert: "%#{@ parameter}%")
+  #  end
+    #query = "%" + nro_cert + "%"
+    #@nro_certificado = Certificado.where('nro_certificado =?',nro_cert).first
+    #puts @nro_certificado.inspect
+    #@auto = Certificado.where('nro_certificado LIKE ?', query).limit(15).pluck(:name)
+    #puts @auto.inspect
+  #end
+
 def searchqueja
   if params[:search].blank?
       redirect_to(queja_path, alert: "Campo vacio!") and return
