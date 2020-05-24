@@ -22,7 +22,7 @@
 
       <tbody>
         <% @certificados.each do |certificado| %>
-          <%if certificado.estado == true &&  certificado.hora_aplicacion != nil %>
+            <%if certificado.estado == true &&  certificado.hora_aplicacion != nil && certificado.fecha_vencimiento > Date.today%>
             <tr>
               <td><%= certificado.nro_certificado %></td>
               <td><%= certificado.fecha_vencimiento %></td>

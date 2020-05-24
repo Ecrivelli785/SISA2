@@ -11,7 +11,8 @@
     <%= f.input :telefono %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, name="Confirmar", :class => "btn btn-success" %>
+  <div class="form-actions d-flex my-3">
+    <div> <%= f.button :submit, name="Confirmar", :class => "btn btn-success" %> </div>
+    <div class="mx-3">   <%= link_to 'Atras', tecnico_path(@tecnico), :class => "btn btn-dark" %> </div>
   </div>
 <% end %>

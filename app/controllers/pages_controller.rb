@@ -21,6 +21,12 @@ class PagesController < ApplicationController
     end
   end
 
+def squish
+  gsub!(/\A[[:space:]]+/, '')
+  gsub!(/[[:space:]]+\z/, '')
+  gsub!(/[[:space:]]+/, ' ')
+  self
+end
 
   def calendario
 
@@ -30,7 +36,7 @@ class PagesController < ApplicationController
     if params[:search].blank?
       redirect_to(clientes_path, alert: "Campo vacio!") and return
     else
-      @parameter = params[:search].downcase
+      @parameter = params[:search].downcase.squish
       @results = Cliente.all.where("lower(nombre) LIKE :search OR lower(apellido) LIKE :search OR lower(domicilio) LIKE :search  OR lower(telefono) LIKE :search OR lower(CUIT) LIKE :search OR lower(correo) LIKE :search OR lower(cliente_tipo) LIKE :search OR (celular) LIKE :search OR (celular) LIKE :search OR (cuit) LIKE :search OR lower(rubro) LIKE :search ", search: "%#{@parameter}%")
     end
   end
@@ -39,7 +45,7 @@ class PagesController < ApplicationController
     if params[:searchwindow].blank?
       redirect_to(certificados_path, alert: "Campo vacio!") and return
     else
-      @parameter = params[:search].downcase
+      @parameter = params[:search].downcase.squish
       @results = Cliente.all.where("lower(nombre) LIKE :search OR lower(apellido) LIKE :search OR lower(domicilio) LIKE :search OR lower(telefono) LIKE :search OR lower(CUIT) LIKE :search OR lower(correo) LIKE :search OR lower(cliente_tipo) LIKE :search OR (celular) LIKE :search", search: "%#{@parameter}%")
     end
   end
@@ -49,7 +55,7 @@ class PagesController < ApplicationController
     if params[:search].blank?
       redirect_to(certificados_path, alert: "Campo vacio!") and return
     else
-    @parameter = params[:search].downcase
+    @parameter = params[:search].downcase.squish
     @results = Certificado.joins(:cliente).where("lower(nombre) LIKE :search OR lower(apellido) LIKE :search OR lower(superficie) LIKE :search OR lower(vector) LIKE :search OR lower(tratamiento) LIKE :search OR lower(droga) LIKE :search OR lower(codigo) LIKE :search OR lower(domicilio) LIKE :search OR lower(telefono) LIKE :search OR lower(CUIT) LIKE :search OR lower(correo) LIKE :search OR lower(cliente_tipo) LIKE :search OR (celular) LIKE :search OR lower(rubro) LIKE :search", search: "%#{@parameter}%")
       if @results.blank?
         @results = Certificado.all.where("cast(nro_certificado as varchar) LIKE :search OR cast(fecha_aplicacion as varchar) LIKE :search OR cast(fecha_vencimiento as varchar) LIKE :search", search: "%#{@parameter}%")
@@ -61,7 +67,7 @@ class PagesController < ApplicationController
     if params[:search].blank?
       redirect_to(tecnicos_path, alert: "Campo vacio!") and return
     else
-    @parameter = params[:search].downcase
+    @parameter = params[:search].downcase.squish
     @results = Tecnico.all.where("lower(nombre) LIKE :search OR lower(apellido) LIKE :search OR lower(domicilio) LIKE :search OR lower(telefono) LIKE:search",search: "%#{@parameter}%")
       if @results.blank?
         @results = Tecnico.all.where("cast(dni as varchar) LIKE :search", search: "%#{@parameter}%")
@@ -70,7 +76,7 @@ class PagesController < ApplicationController
   end
 
   def search_nro_cert
-    clean_params = (params[:search]).gsub(/\s+/,"")
+    clean_params = (params[:search]).gsub(/\s+/,"").squish
     query = "%" + clean_params + "%"
     @nro_certificado = Certificado.where('nro_certificado =?',clean_params).first
     puts @nro_certificado.inspect

@@ -1,6 +1,6 @@
 class CertificadosController < ApplicationController
   before_action :set_certificado, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /certificados
   # GET /certificados.json
   def index
@@ -34,7 +34,7 @@ class CertificadosController < ApplicationController
 
   # GET /certificados/1/edit
   def edit
-    
+
   end
 
   # POST /certificados

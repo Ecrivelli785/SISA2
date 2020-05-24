@@ -38,7 +38,8 @@
       <%= f.input :rubro %>
   </div>
   <!-- div form-inputs cliente-new-form -->
-   <div>
-    <%= f.button :submit,name="Confirmar",:class => "btn btn-success"  %>
+   <div class= "d-flex my-3">
+     <div> <%= f.button :submit,name="Confirmar",:class => "btn btn-success"  %> </div>
+     <div class="mx-3"> <%= link_to 'Atrás', clientes_path,:class => "btn btn-dark"  %> </div>
   </div>
 <% end %>
