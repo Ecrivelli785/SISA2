@@ -6,11 +6,9 @@
       <div><strong><%= f.input :fecha_queja,  label:'Fecha de reclamo'%></div></strong>
       <label><strong>Observaciones</strong></label>
       <div class="mb-5 p-1"><%= f.input :observacion, label: false  %></div>
-        <div class="mb-5 p-1">  
-          <%= f.label :certificado_nro %>
-          <%= f.input :certificado_nro %>
-        </div>  
-      <div class="form-actions my-5 justify-content-between">
+
+      <div class="form-actions my-5 d-flex">
         <div><%= f.button :submit, name="Confirmar" ,:class => "btn btn-success"%></div>
+        <div class="mx-3"><%= link_to 'Atrás', queja_path,:class => "btn btn-dark" %></div>
       </div>
 <% end %>
