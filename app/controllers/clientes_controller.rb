@@ -9,7 +9,7 @@ class ClientesController < ApplicationController
       format.html
       format.json
       format.pdf do
-      render template: 'clientes/pdf', pdf: 'Reporte'
+      render template: 'clientes/faja', pdf: 'Reporte'
       end
     end
   end
@@ -26,6 +26,7 @@ class ClientesController < ApplicationController
 
     @queja = Queja.new
     @queja.update cliente_id: params[:id]
+    # CUIDADO NO ESTA TERMINADO. Se crea una queja pero con un id de certificado generico... Si se saca esto se ronpe ya que una queja debe tener la tabla certificados y clientes.
     @queja.update certificado_id: 62
 
     @queja.update estado: true
@@ -34,7 +35,7 @@ class ClientesController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render template: 'clientes/pdf', pdf: 'Reporte'
+        render template: 'clientes/faja', pdf: 'Reporte'
       end
     end
   end

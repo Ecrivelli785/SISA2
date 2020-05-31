@@ -32,6 +32,8 @@ class CertificadosController < ApplicationController
 
   end
 
+
+
   # GET /certificados/1/edit
   def edit
 

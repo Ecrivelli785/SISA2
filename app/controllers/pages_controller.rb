@@ -5,7 +5,7 @@ class PagesController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render template: 'certificados/pdf', pdf: 'Reporte'
+        render template: 'pages/pdf', pdf: 'Reporte'
       end
     end
   end
@@ -16,11 +16,12 @@ class PagesController < ApplicationController
       format.html
       format.json
       format.pdf do
-        render template: 'certificados/pdf', pdf: 'Reporte'
+        render template: 'pages/pdf', pdf: 'Reporte'
       end
     end
   end
 
+# Metodo para que quite los espacios en blancos en la barra del buscador.
 def squish
   gsub!(/\A[[:space:]]+/, '')
   gsub!(/[[:space:]]+\z/, '')
@@ -28,8 +29,8 @@ def squish
   self
 end
 
-  def calendario
 
+  def calendario
   end
 
   def search
@@ -100,7 +101,7 @@ end
 
 def searchqueja
   if params[:search].blank?
-      redirect_to(queja_path, alert: "Campo vacio!") and return
+      redirect_to(quejas_path, alert: "Campo vacio!") and return
     else
     @parameter = params[:search].downcase
     @results = Queja.joins(:cliente).where("lower(nombre) LIKE :search OR lower(apellido) LIKE :search OR lower(observacion) LIKE :search", search: "%#{@parameter}%")

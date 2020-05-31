@@ -15,6 +15,7 @@
 
   <tbody>
     <% @results.each do |result| %>
+      <%if result.estado == true %>
       <tr>
         <td><%= result.nombre %></td>
         <td><%= result.apellido %></td>
@@ -23,6 +24,7 @@
         <td><%= result.dni %></td>
         <td><%= button_to  'Detalle', result, method: :get, :class => "btn btn-dark"  %></td>
         <td><%= button_to 'Eliminar', tecnico_path(result),method: :delete, data: { confirm: "Estás seguro?" },:class => "btn btn-dark"   %></td>
+    <% end %>
     <% end %>
   </tbody>
 </table>

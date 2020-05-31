@@ -73,8 +73,8 @@
   </div>
 
   <div class="d-flex justify-content-between">
-    <div class="p-2 bd-highlight"><%= link_to "Imprimir Certificado", certificado_path(@certificado, format: :pdf), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-success" %></div>
-    <div class="p-2 bd-highlight"><%= link_to "Imprimir FAJA", certificado_path(@certificado, format: :pdf, template: 'faja/pdf'), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-success" %></div>
+    <div class="p-2 bd-highlight"><%= link_to "Imprimir Certificado", certificado_path(@certificado, format: :pdf, template: 'certificados/pdf'), class: 'btn-u', method: :get, :form => {"data-type" => "pdf" },:class => "btn btn-success" %></div>
+    <!-- <div class="p-2 bd-highlight">< link_to "Imprimir FAJA",  calendario_path ></div> -->
   </div>
 </div>
 </div>

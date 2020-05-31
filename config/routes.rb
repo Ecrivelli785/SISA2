@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
- 
-  resources :tecnicos 
+
+  resources :tecnicos
   resources :certificados, except: [:new]
+
   resources :quejas, except: [:new]
 
   resources :clientes do
     resources :certificados, only: [:new]
     resources :quejas, only: [:new]
   end
-  
+
   get 'calendario', to: 'pages#calendario', as: :calendario
   get 'proximas_fumigaciones', to: 'pages#proximas_fumigaciones', as: :proximas_fumigaciones
   get 'reportes', to: 'pages#reportes', as: :reportes
